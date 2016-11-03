@@ -18,8 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
-    [self.view.layer addSublayer:streamingManager.previewLayer];
+//    CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
+//    [self.view.layer addSublayer:streamingManager.previewLayer];
     
     CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@""];
     
@@ -29,21 +29,19 @@
     CPH264Encoder *videoEncoder = [[CPH264Encoder alloc] init];
     [videoEncoder setPushEngine:pushEngine];
     
+    self.record = [[CPRecord alloc] initWithVideoSize:self.view.frame.size];
+    [self.record setAudioEncoder:audioEncoder];
+    [self.record setVideoEncoder:videoEncoder];
+    self.previewLayer = self.record.previewLayer;
     
-    _record = [[CPRecord alloc] initWithVideoSize:self.view.frame.size];
-    [_record setAudioEncoder:audioEncoder];
-    [_record setVideoEncoder:videoEncoder];
-    _previewLayer = _record.previewLayer;
+    [self.view.layer addSublayer:self.previewLayer];
     
-    [self.view.layer addSublayer:_previewLayer];
-    
-    [_record start];
+    [self.record start];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end
