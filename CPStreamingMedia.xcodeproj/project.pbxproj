@@ -13,6 +13,16 @@
 		3D8941231DCB165F00C32529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8941211DCB165F00C32529 /* Main.storyboard */; };
 		3D8941251DCB165F00C32529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8941241DCB165F00C32529 /* Assets.xcassets */; };
 		3D8941281DCB165F00C32529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8941261DCB165F00C32529 /* LaunchScreen.storyboard */; };
+		3D8941431DCB175E00C32529 /* amf.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941301DCB175E00C32529 /* amf.c */; };
+		3D8941441DCB175E00C32529 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 3D8941331DCB175E00C32529 /* COPYING */; };
+		3D8941451DCB175E00C32529 /* hashswf.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941371DCB175E00C32529 /* hashswf.c */; };
+		3D8941461DCB175E00C32529 /* librtmp.3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D8941391DCB175E00C32529 /* librtmp.3 */; };
+		3D8941471DCB175E00C32529 /* librtmp.3.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D89413A1DCB175E00C32529 /* librtmp.3.html */; };
+		3D8941481DCB175E00C32529 /* librtmp.pc.in in Resources */ = {isa = PBXBuildFile; fileRef = 3D89413B1DCB175E00C32529 /* librtmp.pc.in */; };
+		3D8941491DCB175E00C32529 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413C1DCB175E00C32529 /* log.c */; };
+		3D89414A1DCB175E00C32529 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413E1DCB175E00C32529 /* Makefile */; };
+		3D89414B1DCB175E00C32529 /* parseurl.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413F1DCB175E00C32529 /* parseurl.c */; };
+		3D89414C1DCB175E00C32529 /* rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941401DCB175E00C32529 /* rtmp.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +36,25 @@
 		3D8941241DCB165F00C32529 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D8941271DCB165F00C32529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D8941291DCB165F00C32529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D8941301DCB175E00C32529 /* amf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amf.c; sourceTree = "<group>"; };
+		3D8941311DCB175E00C32529 /* amf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amf.h; sourceTree = "<group>"; };
+		3D8941321DCB175E00C32529 /* bytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bytes.h; sourceTree = "<group>"; };
+		3D8941331DCB175E00C32529 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		3D8941341DCB175E00C32529 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
+		3D8941351DCB175E00C32529 /* dhgroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dhgroups.h; sourceTree = "<group>"; };
+		3D8941361DCB175E00C32529 /* handshake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = handshake.h; sourceTree = "<group>"; };
+		3D8941371DCB175E00C32529 /* hashswf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashswf.c; sourceTree = "<group>"; };
+		3D8941381DCB175E00C32529 /* http.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http.h; sourceTree = "<group>"; };
+		3D8941391DCB175E00C32529 /* librtmp.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = librtmp.3; sourceTree = "<group>"; };
+		3D89413A1DCB175E00C32529 /* librtmp.3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = librtmp.3.html; sourceTree = "<group>"; };
+		3D89413B1DCB175E00C32529 /* librtmp.pc.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = librtmp.pc.in; sourceTree = "<group>"; };
+		3D89413C1DCB175E00C32529 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
+		3D89413D1DCB175E00C32529 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		3D89413E1DCB175E00C32529 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		3D89413F1DCB175E00C32529 /* parseurl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parseurl.c; sourceTree = "<group>"; };
+		3D8941401DCB175E00C32529 /* rtmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtmp.c; sourceTree = "<group>"; };
+		3D8941411DCB175E00C32529 /* rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp.h; sourceTree = "<group>"; };
+		3D8941421DCB175E00C32529 /* rtmp_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp_sys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,7 @@
 		3D8941171DCB165F00C32529 /* CPStreamingMedia */ = {
 			isa = PBXGroup;
 			children = (
+				3D89412F1DCB175E00C32529 /* librtmp */,
 				3D89411B1DCB165F00C32529 /* AppDelegate.h */,
 				3D89411C1DCB165F00C32529 /* AppDelegate.m */,
 				3D89411E1DCB165F00C32529 /* ViewController.h */,
@@ -77,6 +107,32 @@
 				3D8941191DCB165F00C32529 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D89412F1DCB175E00C32529 /* librtmp */ = {
+			isa = PBXGroup;
+			children = (
+				3D8941301DCB175E00C32529 /* amf.c */,
+				3D8941311DCB175E00C32529 /* amf.h */,
+				3D8941321DCB175E00C32529 /* bytes.h */,
+				3D8941331DCB175E00C32529 /* COPYING */,
+				3D8941341DCB175E00C32529 /* dh.h */,
+				3D8941351DCB175E00C32529 /* dhgroups.h */,
+				3D8941361DCB175E00C32529 /* handshake.h */,
+				3D8941371DCB175E00C32529 /* hashswf.c */,
+				3D8941381DCB175E00C32529 /* http.h */,
+				3D8941391DCB175E00C32529 /* librtmp.3 */,
+				3D89413A1DCB175E00C32529 /* librtmp.3.html */,
+				3D89413B1DCB175E00C32529 /* librtmp.pc.in */,
+				3D89413C1DCB175E00C32529 /* log.c */,
+				3D89413D1DCB175E00C32529 /* log.h */,
+				3D89413E1DCB175E00C32529 /* Makefile */,
+				3D89413F1DCB175E00C32529 /* parseurl.c */,
+				3D8941401DCB175E00C32529 /* rtmp.c */,
+				3D8941411DCB175E00C32529 /* rtmp.h */,
+				3D8941421DCB175E00C32529 /* rtmp_sys.h */,
+			);
+			path = librtmp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +166,7 @@
 				TargetAttributes = {
 					3D8941141DCB165F00C32529 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = CH5S74NB5C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,7 +194,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D8941441DCB175E00C32529 /* COPYING in Resources */,
 				3D8941281DCB165F00C32529 /* LaunchScreen.storyboard in Resources */,
+				3D8941471DCB175E00C32529 /* librtmp.3.html in Resources */,
+				3D8941461DCB175E00C32529 /* librtmp.3 in Resources */,
+				3D8941481DCB175E00C32529 /* librtmp.pc.in in Resources */,
 				3D8941251DCB165F00C32529 /* Assets.xcassets in Resources */,
 				3D8941231DCB165F00C32529 /* Main.storyboard in Resources */,
 			);
@@ -150,9 +211,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D8941491DCB175E00C32529 /* log.c in Sources */,
+				3D89414B1DCB175E00C32529 /* parseurl.c in Sources */,
 				3D8941201DCB165F00C32529 /* ViewController.m in Sources */,
+				3D8941451DCB175E00C32529 /* hashswf.c in Sources */,
 				3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */,
+				3D8941431DCB175E00C32529 /* amf.c in Sources */,
+				3D89414A1DCB175E00C32529 /* Makefile in Sources */,
 				3D89411A1DCB165F00C32529 /* main.m in Sources */,
+				3D89414C1DCB175E00C32529 /* rtmp.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +339,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CH5S74NB5C;
 				INFOPLIST_FILE = CPStreamingMedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DNO_CRYPTO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cp.CPStreamingMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -283,8 +352,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CH5S74NB5C;
 				INFOPLIST_FILE = CPStreamingMedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DNO_CRYPTO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cp.CPStreamingMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
