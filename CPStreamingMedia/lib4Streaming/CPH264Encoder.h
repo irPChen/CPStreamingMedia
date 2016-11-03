@@ -1,5 +1,5 @@
 //
-//  CPEncodeH264.h
+//  CPH264Encoder.h
 //  Record
 //
 //  Created by 陈鹏 on 16/9/27.
@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
-#import "CPPush.h"
+#import "CPPushEngine.h"
 
-@interface CPEncodeH264 : NSObject
+@interface CPH264Encoder : NSObject
+
+@property (strong, nonatomic) CPPushEngine *pushEngine;
 
 - (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer;
 

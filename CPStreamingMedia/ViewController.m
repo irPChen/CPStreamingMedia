@@ -7,15 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "CPRecord.h"
-#import "CPEncodeH264.h"
-#import "CPEncodeAAC.h"
-
-@interface ViewController ()
-
-@property (strong, nonatomic) CPRecord *record;
-
-@end
+#import "CPStreamingManager.h"
+#import "CPH264Encoder.h"
+#import "CPAACEncoder.h"
+#import "CPPushEngine.h"
 
 @implementation ViewController
 
@@ -23,14 +18,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.record = [[CPRecord alloc] initWithVideoSize:CGSizeMake(self.view.frame.size.width, 350)];
-    CPEncodeH264 *encodeH264 = [[CPEncodeH264 alloc] init];
-    [self.record setEncodeH264:encodeH264];
-    CPEncodeAAC *encodeAAC = [[CPEncodeAAC alloc] init];
-    [self.record setEncodeAAC:encodeAAC];
-    [self.view.layer addSublayer:self.record.previewLayer];
+    CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
+    [self.view.layer addSublayer:streamingManager.previewLayer];
+    
+    CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@""];
+    
+    CPAACEncoder *audioEncoder = [[CPAACEncoder alloc] init];
+    [audioEncoder setPushEngine:pushEngine];
+    
+    CPH264Encoder *videoEncoder = [[CPH264Encoder alloc] init];
+    [videoEncoder setPushEngine:pushEngine];
+    
+    
+    _record = [[CPRecord alloc] initWithVideoSize:self.view.frame.size];
+    [_record setAudioEncoder:audioEncoder];
+    [_record setVideoEncoder:videoEncoder];
+    _previewLayer = _record.previewLayer;
+    
+    [self.view.layer addSublayer:_previewLayer];
+    
+    [_record start];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

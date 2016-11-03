@@ -8,16 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "CPEncodeH264.h"
-#import "CPEncodeAAC.h"
+#import "CPH264Encoder.h"
+#import "CPAACEncoder.h"
+#import <UIKit/UIKit.h>
 
 @interface CPRecord : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
-- (instancetype)initWithVideoSize:(CGSize)videoSize;
-
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
-@property (strong, nonatomic) CPEncodeH264 *encodeH264;
-@property (strong, nonatomic) CPEncodeAAC *encodeAAC;
+@property (strong, nonatomic) CPH264Encoder *videoEncoder;
+
+@property (strong, nonatomic) CPAACEncoder *audioEncoder;
+
+- (void)start;
+
+- (instancetype)initWithVideoSize:(CGSize)videoSize;
 
 @end

@@ -1,12 +1,12 @@
 //
-//  CPEncodeAAC.m
+//  CPAACEncoder.m
 //  Record
 //
 //  Created by P.Chen on 2016/10/10.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
-#import "CPEncodeAAC.h"
+#import "CPAACEncoder.h"
 
 AudioConverterRef m_converter;
 
@@ -45,7 +45,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
     return noErr;
 }
 
-@interface CPEncodeAAC (){
+@interface CPAACEncoder (){
     dispatch_queue_t encodeQueue;
 }
 
@@ -53,7 +53,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
 
 @end
 
-@implementation CPEncodeAAC
+@implementation CPAACEncoder
 
 - (instancetype)init{
     
@@ -214,7 +214,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
                     NSData *rawAAC = [NSData dataWithBytes:outputBufferList.mBuffers[0].mData length:outputBufferList.mBuffers[0].mDataByteSize];
                     
                     //推流
-                    [self.push pushAudioData:rawAAC sampleBuffer:sampleBuffer];
+                    [self.pushEngine pushAudioData:rawAAC sampleBuffer:sampleBuffer];
                     
                     free(outputBuffer);
                     outputBuffer = NULL;

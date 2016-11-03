@@ -1,5 +1,5 @@
 //
-//  CPPush.h
+//  CPPushEngine.h
 //  Record
 //
 //  Created by P.Chen on 16/9/28.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
 
-@interface CPPush : NSObject
+@interface CPPushEngine : NSObject
 
 @property (assign, nonatomic) BOOL isFirstVideoPacket;
 

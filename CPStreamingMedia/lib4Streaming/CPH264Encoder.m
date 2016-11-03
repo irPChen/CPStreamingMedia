@@ -1,15 +1,15 @@
 //
-//  CPEncodeH264.m
+//  CPH264Encoder.m
 //  Record
 //
 //  Created by 陈鹏 on 16/9/27.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
-#import "CPEncodeH264.h"
+#import "CPH264Encoder.h"
 #import "rtmp.h"
 
-static CPPush *_output;
+static CPPushEngine *_output;
 
 #pragma mark -- 编码回调
 
@@ -37,18 +37,18 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
         static const int AVCCHeaderLength = 4;
         while (bufferOffset < totalLength - AVCCHeaderLength) {
             
-            NSLog(@"bufferOffset:%zu,totalLength:%zu",bufferOffset,totalLength);
+//            NSLog(@"bufferOffset:%zu,totalLength:%zu",bufferOffset,totalLength);
             
             // Read the NAL unit length
             uint32_t NALUnitLength = 0;
             memcpy(&NALUnitLength, dataPointer + bufferOffset, AVCCHeaderLength);
             
-            NSLog(@"Befor NALUnitLength:%d",NALUnitLength);
+//            NSLog(@"Befor NALUnitLength:%d",NALUnitLength);
             
             // Convert the length value from Big-endian to Little-endian
             NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
             
-            NSLog(@"After NALUnitLength:%d",NALUnitLength);
+//            NSLog(@"After NALUnitLength:%d",NALUnitLength);
 
             
             NSData* data = [[NSData alloc] initWithBytes:(dataPointer + bufferOffset + AVCCHeaderLength) length:NALUnitLength];
@@ -57,7 +57,7 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
             
             if (data.length==31) {
-                NSLog(@"data==%@-========%d",data,keyframe);
+//                NSLog(@"data==%@-========%d",data,keyframe);
             }else{
                 [_output pushVideoData:data Buffer:sampleBuffer isKeyFrame:keyframe];
             }
@@ -68,24 +68,33 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
     }
 }
 
-@interface CPEncodeH264 () {
+@interface CPH264Encoder () {
     VTCompressionSessionRef _compressionSession;
 }
 
 @end
 
-@implementation CPEncodeH264
+@implementation CPH264Encoder
 
 - (instancetype)init{
     
     self = [super init];
     
     if (self) {
-        CPPush *push = [[CPPush alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
-        _output = push;
+//        CPPushEngine *push = [[CPPushEngine alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
+//        _output = push;
     }
     
     return self;
+}
+
+- (void)setPushEngine:(CPPushEngine *)pushEngine{
+    
+    if (_pushEngine != pushEngine) {
+    }
+
+    _pushEngine = pushEngine;
+    _output = pushEngine;
 }
 
 - (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer{

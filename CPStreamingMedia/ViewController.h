@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPRecord.h"
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) CPRecord *record;
+
+@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 @end
 

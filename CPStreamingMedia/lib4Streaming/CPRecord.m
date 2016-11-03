@@ -20,6 +20,10 @@
 
 @property (strong, nonatomic) AVCaptureConnection *audioCaptureConnection;
 
+@property (strong, nonatomic) AVCaptureMetadataOutput *metadataOutput;
+
+@property (strong, nonatomic) CALayer *faceLayer;
+
 @end
 
 
@@ -41,7 +45,7 @@
         AVCaptureDevice *videoCaptureDevice;
         NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
         for (AVCaptureDevice *camera in cameras) {
-            if ([camera position] == AVCaptureDevicePositionBack) {//选择摄像头
+            if ([camera position] == AVCaptureDevicePositionFront) {//选择摄像头
                 videoCaptureDevice = camera;
             }
         }
@@ -64,6 +68,13 @@
         dispatch_queue_t audioQueue = dispatch_queue_create("com.cp.audio", NULL);
         [self.audioDataOutput setSampleBufferDelegate:self queue:audioQueue];
         
+        //添加人脸识别输出
+        self.metadataOutput = [[AVCaptureMetadataOutput alloc] init];
+        dispatch_queue_t metadataQueue = dispatch_queue_create("com.cp.metadata", NULL);
+        [self.metadataOutput setMetadataObjectsDelegate:self queue:metadataQueue];
+        
+        [self.captureSession beginConfiguration];
+        
         //5、将输入、输出设备添加到会话中
         if ([self.captureSession canAddInput:videoCaptureDeviceInput]) {
             [self.captureSession addInput:videoCaptureDeviceInput];
@@ -77,37 +88,69 @@
         if ([self.captureSession canAddOutput:self.audioDataOutput]) {
             [self.captureSession addOutput:self.audioDataOutput];
         }
+        if ([self.captureSession canAddOutput:self.metadataOutput]) {
+            [self.captureSession addOutput:self.metadataOutput];
+            [self.metadataOutput setMetadataObjectTypes:@[AVMetadataObjectTypeFace]];
+        }
         
         //6、添加视频预览
         self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
         [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
         [self.previewLayer setFrame:CGRectMake(0, 0, videoSize.width, videoSize.height)];
-        //        [[[self view] layer] addSublayer:previewLayer];
-
+        
         self.videoCaptureConnection = [self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
         self.audioCaptureConnection = [self.audioDataOutput connectionWithMediaType:AVMediaTypeAudio];
         
-        //7、启动会话
-        [self.captureSession startRunning];
+        [self.captureSession commitConfiguration];
     }
     
     return self;
+}
+
+- (void)start{
+    //启动会话
+    [self.captureSession startRunning];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        //[self.encodeAAC encodeAudioSmapleBuffer:sampleBuffer];
+        //        [self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        [self.encodeH264 encodeVideoBuffer:sampleBuffer];
+        NSLog(@"%@",self.videoEncoder);
+        [self.videoEncoder encodeVideoBuffer:sampleBuffer];
+    }
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+    
+    if (metadataObjects.count > 0) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            CALayer *faceObject = [metadataObjects firstObject];
+            
+            if (self.faceLayer == nil) {
+                self.faceLayer = [[CALayer alloc] init];
+                [self.faceLayer setBorderColor:[UIColor redColor].CGColor];
+                [self.faceLayer setBorderWidth:1];
+                [self.previewLayer addSublayer:self.faceLayer];
+            }
+            
+            CGRect faceBounds = faceObject.bounds;
+            CGSize viewSize = _previewLayer.bounds.size;
+            
+            [self.faceLayer setBounds:CGRectMake(0, 0, faceBounds.size.width * viewSize.height, faceBounds.size.height * viewSize.width)];
+            self.faceLayer.position = CGPointMake(viewSize.width * (faceBounds.origin.y + faceBounds.size.height / 2), viewSize.height * (faceBounds.origin.x + faceBounds.size.width / 2));
+        });
     }
 }
 
 //录制回调
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-//    NSLog(@"didDropSampleBuffer:%@",sampleBuffer);
+    //    NSLog(@"didDropSampleBuffer:%@",sampleBuffer);
 }
 
 @end

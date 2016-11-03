@@ -23,10 +23,11 @@
 		3D89414A1DCB175E00C32529 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413E1DCB175E00C32529 /* Makefile */; };
 		3D89414B1DCB175E00C32529 /* parseurl.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413F1DCB175E00C32529 /* parseurl.c */; };
 		3D89414C1DCB175E00C32529 /* rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941401DCB175E00C32529 /* rtmp.c */; };
-		3D8941561DCB17FE00C32529 /* CPEncodeAAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */; };
-		3D8941571DCB17FE00C32529 /* CPEncodeH264.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941511DCB17FE00C32529 /* CPEncodeH264.m */; };
-		3D8941581DCB17FE00C32529 /* CPPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941531DCB17FE00C32529 /* CPPush.m */; };
+		3D8941561DCB17FE00C32529 /* CPAACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89414F1DCB17FE00C32529 /* CPAACEncoder.m */; };
+		3D8941571DCB17FE00C32529 /* CPH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941511DCB17FE00C32529 /* CPH264Encoder.m */; };
+		3D8941581DCB17FE00C32529 /* CPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941531DCB17FE00C32529 /* CPPushEngine.m */; };
 		3D8941591DCB17FE00C32529 /* CPRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941551DCB17FE00C32529 /* CPRecord.m */; };
+		3D89415C1DCB1FE900C32529 /* CPStreamingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,14 +60,16 @@
 		3D8941401DCB175E00C32529 /* rtmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtmp.c; sourceTree = "<group>"; };
 		3D8941411DCB175E00C32529 /* rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp.h; sourceTree = "<group>"; };
 		3D8941421DCB175E00C32529 /* rtmp_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp_sys.h; sourceTree = "<group>"; };
-		3D89414E1DCB17FE00C32529 /* CPEncodeAAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEncodeAAC.h; sourceTree = "<group>"; };
-		3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEncodeAAC.m; sourceTree = "<group>"; };
-		3D8941501DCB17FE00C32529 /* CPEncodeH264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEncodeH264.h; sourceTree = "<group>"; };
-		3D8941511DCB17FE00C32529 /* CPEncodeH264.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEncodeH264.m; sourceTree = "<group>"; };
-		3D8941521DCB17FE00C32529 /* CPPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPush.h; sourceTree = "<group>"; };
-		3D8941531DCB17FE00C32529 /* CPPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPush.m; sourceTree = "<group>"; };
+		3D89414E1DCB17FE00C32529 /* CPAACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAACEncoder.h; sourceTree = "<group>"; };
+		3D89414F1DCB17FE00C32529 /* CPAACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAACEncoder.m; sourceTree = "<group>"; };
+		3D8941501DCB17FE00C32529 /* CPH264Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPH264Encoder.h; sourceTree = "<group>"; };
+		3D8941511DCB17FE00C32529 /* CPH264Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPH264Encoder.m; sourceTree = "<group>"; };
+		3D8941521DCB17FE00C32529 /* CPPushEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPushEngine.h; sourceTree = "<group>"; };
+		3D8941531DCB17FE00C32529 /* CPPushEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPushEngine.m; sourceTree = "<group>"; };
 		3D8941541DCB17FE00C32529 /* CPRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRecord.h; sourceTree = "<group>"; };
 		3D8941551DCB17FE00C32529 /* CPRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRecord.m; sourceTree = "<group>"; };
+		3D89415A1DCB1FE900C32529 /* CPStreamingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStreamingManager.h; sourceTree = "<group>"; };
+		3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStreamingManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,14 +154,16 @@
 		3D89414D1DCB17FE00C32529 /* lib4Streaming */ = {
 			isa = PBXGroup;
 			children = (
-				3D89414E1DCB17FE00C32529 /* CPEncodeAAC.h */,
-				3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */,
-				3D8941501DCB17FE00C32529 /* CPEncodeH264.h */,
-				3D8941511DCB17FE00C32529 /* CPEncodeH264.m */,
-				3D8941521DCB17FE00C32529 /* CPPush.h */,
-				3D8941531DCB17FE00C32529 /* CPPush.m */,
+				3D89415A1DCB1FE900C32529 /* CPStreamingManager.h */,
+				3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */,
 				3D8941541DCB17FE00C32529 /* CPRecord.h */,
 				3D8941551DCB17FE00C32529 /* CPRecord.m */,
+				3D89414E1DCB17FE00C32529 /* CPAACEncoder.h */,
+				3D89414F1DCB17FE00C32529 /* CPAACEncoder.m */,
+				3D8941501DCB17FE00C32529 /* CPH264Encoder.h */,
+				3D8941511DCB17FE00C32529 /* CPH264Encoder.m */,
+				3D8941521DCB17FE00C32529 /* CPPushEngine.h */,
+				3D8941531DCB17FE00C32529 /* CPPushEngine.m */,
 			);
 			path = lib4Streaming;
 			sourceTree = "<group>";
@@ -246,11 +251,12 @@
 				3D8941591DCB17FE00C32529 /* CPRecord.m in Sources */,
 				3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */,
 				3D8941431DCB175E00C32529 /* amf.c in Sources */,
-				3D8941561DCB17FE00C32529 /* CPEncodeAAC.m in Sources */,
+				3D8941561DCB17FE00C32529 /* CPAACEncoder.m in Sources */,
 				3D89414A1DCB175E00C32529 /* Makefile in Sources */,
-				3D8941571DCB17FE00C32529 /* CPEncodeH264.m in Sources */,
+				3D8941571DCB17FE00C32529 /* CPH264Encoder.m in Sources */,
 				3D89411A1DCB165F00C32529 /* main.m in Sources */,
-				3D8941581DCB17FE00C32529 /* CPPush.m in Sources */,
+				3D89415C1DCB1FE900C32529 /* CPStreamingManager.m in Sources */,
+				3D8941581DCB17FE00C32529 /* CPPushEngine.m in Sources */,
 				3D89414C1DCB175E00C32529 /* rtmp.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -359,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -412,6 +418,7 @@
 				3D89412E1DCB165F00C32529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

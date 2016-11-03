@@ -1,24 +1,24 @@
 //
-//  CPPush.m
+//  CPPushEngine.m
 //  Record
 //
 //  Created by P.Chen on 16/9/28.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
-#import "CPPush.h"
+#import "CPPushEngine.h"
 #import "rtmp.h"
 
 static RTMP *_rtmp;
 
-@interface CPPush ()
+@interface CPPushEngine ()
 
 @property (assign, nonatomic) float ts;
 @property (assign, nonatomic) NSTimeInterval ft;
 
 @end
 
-@implementation CPPush
+@implementation CPPushEngine
 
 - (instancetype)initWithURL:(NSString*)URL{
     

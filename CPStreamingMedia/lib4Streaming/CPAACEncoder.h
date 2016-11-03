@@ -1,5 +1,5 @@
 //
-//  CPEncodeAAC.h
+//  CPAACEncoder.h
 //  Record
 //
 //  Created by P.Chen on 2016/10/10.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "CPPush.h"
+#import "CPPushEngine.h"
 
-@interface CPEncodeAAC : NSObject
+@interface CPAACEncoder : NSObject
 
-@property (strong, nonatomic) CPPush *push;
+@property (strong, nonatomic) CPPushEngine *pushEngine;
 
 - (void)encodeAudioSmapleBuffer:(CMSampleBufferRef)sampleBuffer;
 
