@@ -119,7 +119,6 @@
         //        [self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        NSLog(@"%@",self.videoEncoder);
         [self.videoEncoder encodeVideoBuffer:sampleBuffer];
     }
 }

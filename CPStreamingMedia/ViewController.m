@@ -12,31 +12,20 @@
 #import "CPAACEncoder.h"
 #import "CPPushEngine.h"
 
+@interface ViewController ()
+
+@property (strong, nonatomic) CPStreamingManager *streamingManager;
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
-//    [self.view.layer addSublayer:streamingManager.previewLayer];
-    
-    CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@""];
-    
-    CPAACEncoder *audioEncoder = [[CPAACEncoder alloc] init];
-    [audioEncoder setPushEngine:pushEngine];
-    
-    CPH264Encoder *videoEncoder = [[CPH264Encoder alloc] init];
-    [videoEncoder setPushEngine:pushEngine];
-    
-    self.record = [[CPRecord alloc] initWithVideoSize:self.view.frame.size];
-    [self.record setAudioEncoder:audioEncoder];
-    [self.record setVideoEncoder:videoEncoder];
-    self.previewLayer = self.record.previewLayer;
-    
-    [self.view.layer addSublayer:self.previewLayer];
-    
-    [self.record start];
+    self.streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
+    [self.view.layer addSublayer:self.streamingManager.previewLayer];
 }
 
 - (void)didReceiveMemoryWarning {

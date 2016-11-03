@@ -34,12 +34,11 @@
         CPH264Encoder *videoEncoder = [[CPH264Encoder alloc] init];
         [videoEncoder setPushEngine:pushEngine];
         
-        _record = [[CPRecord alloc] initWithVideoSize:videoSize];
-        [_record setAudioEncoder:audioEncoder];
-        [_record setVideoEncoder:videoEncoder];
-        _previewLayer = _record.previewLayer;
-        
-        [_record start];
+        self.record = [[CPRecord alloc] initWithVideoSize:videoSize];
+        [self.record setAudioEncoder:audioEncoder];
+        [self.record setVideoEncoder:videoEncoder];
+        self.previewLayer = self.record.previewLayer;
+        [self.record start];
     }
     
     return self;

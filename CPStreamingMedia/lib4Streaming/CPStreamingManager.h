@@ -12,7 +12,7 @@
 
 @interface CPStreamingManager : NSObject
 
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
 
