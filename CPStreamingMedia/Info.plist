@@ -20,6 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>"Record申请摄像机权限"</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>“Record申请麦克风权限”</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>“Record申请相册权限”</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

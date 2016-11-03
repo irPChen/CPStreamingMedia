@@ -23,6 +23,10 @@
 		3D89414A1DCB175E00C32529 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413E1DCB175E00C32529 /* Makefile */; };
 		3D89414B1DCB175E00C32529 /* parseurl.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D89413F1DCB175E00C32529 /* parseurl.c */; };
 		3D89414C1DCB175E00C32529 /* rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941401DCB175E00C32529 /* rtmp.c */; };
+		3D8941561DCB17FE00C32529 /* CPEncodeAAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */; };
+		3D8941571DCB17FE00C32529 /* CPEncodeH264.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941511DCB17FE00C32529 /* CPEncodeH264.m */; };
+		3D8941581DCB17FE00C32529 /* CPPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941531DCB17FE00C32529 /* CPPush.m */; };
+		3D8941591DCB17FE00C32529 /* CPRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941551DCB17FE00C32529 /* CPRecord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,14 @@
 		3D8941401DCB175E00C32529 /* rtmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtmp.c; sourceTree = "<group>"; };
 		3D8941411DCB175E00C32529 /* rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp.h; sourceTree = "<group>"; };
 		3D8941421DCB175E00C32529 /* rtmp_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp_sys.h; sourceTree = "<group>"; };
+		3D89414E1DCB17FE00C32529 /* CPEncodeAAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEncodeAAC.h; sourceTree = "<group>"; };
+		3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEncodeAAC.m; sourceTree = "<group>"; };
+		3D8941501DCB17FE00C32529 /* CPEncodeH264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEncodeH264.h; sourceTree = "<group>"; };
+		3D8941511DCB17FE00C32529 /* CPEncodeH264.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEncodeH264.m; sourceTree = "<group>"; };
+		3D8941521DCB17FE00C32529 /* CPPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPush.h; sourceTree = "<group>"; };
+		3D8941531DCB17FE00C32529 /* CPPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPush.m; sourceTree = "<group>"; };
+		3D8941541DCB17FE00C32529 /* CPRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRecord.h; sourceTree = "<group>"; };
+		3D8941551DCB17FE00C32529 /* CPRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRecord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3D89412F1DCB175E00C32529 /* librtmp */,
+				3D89414D1DCB17FE00C32529 /* lib4Streaming */,
 				3D89411B1DCB165F00C32529 /* AppDelegate.h */,
 				3D89411C1DCB165F00C32529 /* AppDelegate.m */,
 				3D89411E1DCB165F00C32529 /* ViewController.h */,
@@ -133,6 +146,21 @@
 				3D8941421DCB175E00C32529 /* rtmp_sys.h */,
 			);
 			path = librtmp;
+			sourceTree = "<group>";
+		};
+		3D89414D1DCB17FE00C32529 /* lib4Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				3D89414E1DCB17FE00C32529 /* CPEncodeAAC.h */,
+				3D89414F1DCB17FE00C32529 /* CPEncodeAAC.m */,
+				3D8941501DCB17FE00C32529 /* CPEncodeH264.h */,
+				3D8941511DCB17FE00C32529 /* CPEncodeH264.m */,
+				3D8941521DCB17FE00C32529 /* CPPush.h */,
+				3D8941531DCB17FE00C32529 /* CPPush.m */,
+				3D8941541DCB17FE00C32529 /* CPRecord.h */,
+				3D8941551DCB17FE00C32529 /* CPRecord.m */,
+			);
+			path = lib4Streaming;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,10 +243,14 @@
 				3D89414B1DCB175E00C32529 /* parseurl.c in Sources */,
 				3D8941201DCB165F00C32529 /* ViewController.m in Sources */,
 				3D8941451DCB175E00C32529 /* hashswf.c in Sources */,
+				3D8941591DCB17FE00C32529 /* CPRecord.m in Sources */,
 				3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */,
 				3D8941431DCB175E00C32529 /* amf.c in Sources */,
+				3D8941561DCB17FE00C32529 /* CPEncodeAAC.m in Sources */,
 				3D89414A1DCB175E00C32529 /* Makefile in Sources */,
+				3D8941571DCB17FE00C32529 /* CPEncodeH264.m in Sources */,
 				3D89411A1DCB165F00C32529 /* main.m in Sources */,
+				3D8941581DCB17FE00C32529 /* CPPush.m in Sources */,
 				3D89414C1DCB175E00C32529 /* rtmp.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
