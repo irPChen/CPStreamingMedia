@@ -37,18 +37,16 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
         static const int AVCCHeaderLength = 4;
         while (bufferOffset < totalLength - AVCCHeaderLength) {
             
-//            NSLog(@"bufferOffset:%zu,totalLength:%zu",bufferOffset,totalLength);
-            
             // Read the NAL unit length
             uint32_t NALUnitLength = 0;
             memcpy(&NALUnitLength, dataPointer + bufferOffset, AVCCHeaderLength);
             
-//            NSLog(@"Befor NALUnitLength:%d",NALUnitLength);
+            NSLog(@"Befor NALUnitLength:%d",NALUnitLength);
             
             // Convert the length value from Big-endian to Little-endian
             NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
             
-//            NSLog(@"After NALUnitLength:%d",NALUnitLength);
+            NSLog(@"After NALUnitLength:%d",NALUnitLength);
 
             
             NSData* data = [[NSData alloc] initWithBytes:(dataPointer + bufferOffset + AVCCHeaderLength) length:NALUnitLength];
@@ -57,7 +55,7 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
             
             if (data.length==31) {
-//                NSLog(@"data==%@-========%d",data,keyframe);
+                //关键帧前有31个字节数据，不发送给服务端
             }else{
                 [_output pushVideoData:data Buffer:sampleBuffer isKeyFrame:keyframe];
             }
@@ -76,24 +74,12 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 @implementation CPH264Encoder
 
-- (instancetype)init{
-    
-    self = [super init];
-    
-    if (self) {
-//        CPPushEngine *push = [[CPPushEngine alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
-//        _output = push;
-    }
-    
-    return self;
-}
-
 - (void)setPushEngine:(CPPushEngine *)pushEngine{
     
     if (_pushEngine != pushEngine) {
+        _pushEngine = pushEngine;
     }
 
-    _pushEngine = pushEngine;
     _output = pushEngine;
 }
 
@@ -115,23 +101,25 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
         //设置实时编码输出（避免延迟）
         VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
         //设置H264
-        VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_AutoLevel);
+        VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Main_AutoLevel);
         //设置关键帧（GOPsize)间隔
         int frameInterval = 10;
         CFNumberRef  frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, frameIntervalRef);
         //设置期望帧率
-        int fps = 10;
+        int fps = 30;
         CFNumberRef  fpsRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &fps);
         VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_ExpectedFrameRate, fpsRef);
         //设置码率，上限，单位是bps
-        int bitRate = width * height * 3 * 4 * 8;
+        int bitRate = 10000 * 1024;
         CFNumberRef bitRateRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRate);
         VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_AverageBitRate, bitRateRef);
         //设置码率，均值，单位是byte
         int bitRateLimit = width * height * 3 * 4;
         CFNumberRef bitRateLimitRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRateLimit);
         VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_DataRateLimits, bitRateLimitRef);
+        //编码器熵编码开启，H264_Main以上支持，H264_Base只支持kVTH264EntropyMode_CAVLC
+        VTSessionSetProperty(_compressionSession, kVTCompressionPropertyKey_H264EntropyMode, kVTH264EntropyMode_CABAC);
         
         OSStatus prepareStatus = VTCompressionSessionPrepareToEncodeFrames(_compressionSession);
         if (prepareStatus != noErr) {
