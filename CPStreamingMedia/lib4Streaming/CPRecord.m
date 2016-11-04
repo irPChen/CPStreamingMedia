@@ -63,6 +63,8 @@
         [self.videoDataOutput setSampleBufferDelegate:self queue:videoQueue];
         NSDictionary *videoSettings = @{(__bridge id)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)};
         self.videoDataOutput.videoSettings = videoSettings;
+        //丢弃延时帧
+//        self.videoDataOutput.alwaysDiscardsLateVideoFrames = YES;
         
         self.audioDataOutput = [[AVCaptureAudioDataOutput alloc] init];
         dispatch_queue_t audioQueue = dispatch_queue_create("com.cp.audio", NULL);
@@ -116,7 +118,7 @@
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        //        [self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
+        [self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
         [self.videoEncoder encodeVideoBuffer:sampleBuffer];

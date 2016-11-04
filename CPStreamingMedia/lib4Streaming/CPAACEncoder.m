@@ -61,7 +61,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
         
         encodeQueue = dispatch_queue_create("encodeAudio", DISPATCH_QUEUE_SERIAL);
         //推流
-//        self.push = [[CPPush alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
+        //        self.push = [[CPPush alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
     }
     return self;
 }
@@ -108,18 +108,17 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
     for (int i = 0; i < cout; cout++) {
         AudioClassDescription temp = descriptions[i];
         
-        /*P.Chen:音频软件编码与硬件编码基本上无差异*/
-        /*软件编码
-                if (temp.mManufacturer == kAppleSoftwareAudioCodecManufacturer && temp.mSubType ==outAudioStreamBasicDescription.mFormatID) {
-                    audioClassDes = temp;
-                    break;
-                }
-         */
-        //硬件编码
-        if (temp.mManufacturer == kAppleHardwareAudioCodecManufacturer && temp.mSubType ==outAudioStreamBasicDescription.mFormatID) {
+        //软件编码
+        if (temp.mManufacturer == kAppleSoftwareAudioCodecManufacturer && temp.mSubType ==outAudioStreamBasicDescription.mFormatID) {
             audioClassDes = temp;
             break;
         }
+        /*P.Chen:音频软件编码与硬件编码基本上无差异*/
+        //硬件编码
+        //if (temp.mManufacturer == kAppleHardwareAudioCodecManufacturer && temp.mSubType ==outAudioStreamBasicDescription.mFormatID) {
+        //audioClassDes = temp;
+        //break;
+        //}
     }
     
     //创建convertcontext用来保存converter的信息
@@ -138,6 +137,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
         
         //设置比特率
         UInt32 bitRate = 96000;
+        //UInt32 bitRate = 12800;
         
         result = AudioConverterSetProperty(converter, kAudioConverterEncodeBitRate, sizeof(bitRate), &bitRate);
         if (result != noErr) {
