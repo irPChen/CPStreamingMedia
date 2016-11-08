@@ -81,6 +81,7 @@ static RTMP *_rtmp;
      00 00 09                                                                     //数组结束符
      */
     
+    /*
     uint32_t metaDataSize = 241;
     char metaData[] = {0x02, 0x00, 0x0d, 0x40, 0x73, 0x65, 0x74, 0x44, 0x61, 0x74, 0x61, 0x46, 0x72, 0x61, 0x6d, 0x65,
         
@@ -120,6 +121,26 @@ static RTMP *_rtmp;
     packet->m_nTimeStamp = 0;
     packet->m_packetType = RTMP_PACKET_TYPE_INFO;
     packet->m_nBodySize  = metaDataSize;
+    RTMP_SendPacket(_rtmp, packet, 0);
+    RTMPPacket_Free(packet);
+    */
+    
+    NSData *onMetaData = [self getMetaData];
+    int onMetaDataSize = onMetaData.length;
+    char *onMetaDataChar = malloc(onMetaDataSize * sizeof(char));
+    [onMetaData getBytes:onMetaDataChar length:onMetaDataSize];
+    
+    RTMPPacket *packet = (RTMPPacket*)malloc(sizeof(RTMPPacket));
+    RTMPPacket_Alloc(packet, onMetaDataSize);
+    RTMPPacket_Reset(packet);
+    packet->m_nChannel = 0x03;
+    packet->m_nInfoField2 = _rtmp->m_stream_id;
+    memcpy(packet->m_body,  onMetaDataChar,  onMetaDataSize);
+    packet->m_headerType = RTMP_PACKET_SIZE_LARGE;
+    packet->m_hasAbsTimestamp = FALSE;
+    packet->m_nTimeStamp = 0;
+    packet->m_packetType = RTMP_PACKET_TYPE_INFO;
+    packet->m_nBodySize  = onMetaDataSize;
     RTMP_SendPacket(_rtmp, packet, 0);
     RTMPPacket_Free(packet);
 }
@@ -299,6 +320,85 @@ static RTMP *_rtmp;
     packet->m_nBodySize  = videoPacketSize;
     RTMP_SendPacket(_rtmp, packet, 0);
     RTMPPacket_Free(packet);
+}
+
+- (NSData*)getMetaData{
+    
+    NSMutableData *metaData = [NSMutableData data];
+    NSDictionary *propertyDic = @{@"width":@1280.0, @"height":@720.0, @"videocodecid":@7.0, @"framerate":@30.0, @"audiocodecid":@10.0, @"audiodatarate":@128.0, @"audiosamplerate":@44100.0, @"audiosamplesize":@16.0, @"audiochannels":@1.0};
+    
+    [metaData appendData:[self addStringProperty:@"@setDataFrame"]];
+    [metaData appendData:[self addStringProperty:@"onMetaData"]];
+    [metaData appendData:[self addArrayProperty:propertyDic]];
+    
+    return metaData;
+}
+
+- (NSData*)addStringProperty:(NSString*)propertyString{
+    
+    NSMutableData *propertyData = [NSMutableData data];
+    
+    char *stringType = 0x02;
+    [propertyData appendData:[NSData dataWithBytes:&stringType length:1]];
+    [propertyData appendData:[self stringToFlvData:propertyString]];
+    
+    return propertyData;
+}
+
+- (NSData*)addArrayProperty:(NSDictionary*)propertyDic{
+    
+    NSMutableData *ECMAArrayData = [NSMutableData data];
+    
+    int propertyCount = propertyDic.allKeys.count;
+    
+    char ECMAArrayHeader[5];
+    ECMAArrayHeader[0] = 0x08;
+    ECMAArrayHeader[1] = propertyCount >> 24;
+    ECMAArrayHeader[2] = propertyCount >> 16;
+    ECMAArrayHeader[3] = propertyCount >> 8;
+    ECMAArrayHeader[4] = propertyCount;
+    
+    [ECMAArrayData appendData:[NSData dataWithBytes:ECMAArrayHeader length:5]];
+    
+    [propertyDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [ECMAArrayData appendData:[self stringToFlvData:key]];
+        [ECMAArrayData appendData:[self floatToFlvData:[obj floatValue]]];
+    }];
+    
+    char ECMAArrayEnd[3] = {0x00, 0x00, 0x09};
+    [ECMAArrayData appendData:[NSData dataWithBytes:ECMAArrayEnd length:3]];
+    
+    return ECMAArrayData;
+}
+
+- (NSData*)stringToFlvData:(NSString*)sourceString{
+    
+    char header[2];
+    NSMutableData *returnData = [NSMutableData data];
+    
+    uint32_t stringSize = sourceString.length;
+    header[0] = (stringSize >> 8);
+    header[1] = stringSize;
+    
+    [returnData appendData:[NSData dataWithBytes:header length:2]];
+    [returnData appendData:[sourceString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    return returnData;
+}
+
+- (NSData*)floatToFlvData:(float)floatNumber{
+    
+    NSMutableData *returnData = [NSMutableData data];
+    
+    char header = 0x00;
+    [returnData appendBytes:&header length:1];
+    
+    CFSwappedFloat64 buf = CFConvertFloat64HostToSwapped(floatNumber);
+    NSData *swapData = [NSData dataWithBytes:&buf length:8];
+    
+    [returnData appendData:swapData];
+    
+    return returnData;
 }
 
 @end
