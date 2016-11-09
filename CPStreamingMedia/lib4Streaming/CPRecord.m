@@ -64,7 +64,7 @@
         NSDictionary *videoSettings = @{(__bridge id)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)};
         self.videoDataOutput.videoSettings = videoSettings;
         //丢弃延时帧
-//        self.videoDataOutput.alwaysDiscardsLateVideoFrames = YES;
+        self.videoDataOutput.alwaysDiscardsLateVideoFrames = YES;
         
         self.audioDataOutput = [[AVCaptureAudioDataOutput alloc] init];
         dispatch_queue_t audioQueue = dispatch_queue_create("com.cp.audio", NULL);
