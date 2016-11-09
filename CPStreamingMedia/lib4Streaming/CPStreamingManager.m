@@ -26,7 +26,7 @@
     
     if (self) {
         
-        CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@""];
+        CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@"rtmp://10.57.9.88/live/gha8l7"];
         
         CPAACEncoder *audioEncoder = [[CPAACEncoder alloc] init];
         [audioEncoder setPushEngine:pushEngine];

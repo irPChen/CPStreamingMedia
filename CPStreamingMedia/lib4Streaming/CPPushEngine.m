@@ -29,8 +29,8 @@ static RTMP *_rtmp;
         }
         RTMP_Init(_rtmp);
         
-        int ret = RTMP_SetupURL(_rtmp, "rtmp://10.57.9.88/live/gha8l7");//测试接口
-//        int ret = RTMP_SetupURL(_rtmp, "rtmp://upload.rtmp.kukuplay.com/live/gha8l7");//线上上传接口
+        char *uploadURL = [URL cStringUsingEncoding:NSUTF8StringEncoding];
+        int ret = RTMP_SetupURL(_rtmp, uploadURL);//测试接口
         NSLog(@"RTMP_SetupURL ret:%d",ret);
         
         if (!ret) {

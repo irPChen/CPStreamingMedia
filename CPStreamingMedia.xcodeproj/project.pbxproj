@@ -28,6 +28,7 @@
 		3D8941581DCB17FE00C32529 /* CPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941531DCB17FE00C32529 /* CPPushEngine.m */; };
 		3D8941591DCB17FE00C32529 /* CPRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941551DCB17FE00C32529 /* CPRecord.m */; };
 		3D89415C1DCB1FE900C32529 /* CPStreamingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */; };
+		3DB4ECBF1DD3043900B1D6B3 /* CPVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,8 @@
 		3D8941551DCB17FE00C32529 /* CPRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRecord.m; sourceTree = "<group>"; };
 		3D89415A1DCB1FE900C32529 /* CPStreamingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStreamingManager.h; sourceTree = "<group>"; };
 		3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStreamingManager.m; sourceTree = "<group>"; };
+		3DB4ECBD1DD3043900B1D6B3 /* CPVideoConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPVideoConfiguration.h; sourceTree = "<group>"; };
+		3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPVideoConfiguration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 			children = (
 				3D89415A1DCB1FE900C32529 /* CPStreamingManager.h */,
 				3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */,
+				3DB4ECBD1DD3043900B1D6B3 /* CPVideoConfiguration.h */,
+				3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */,
 				3D8941541DCB17FE00C32529 /* CPRecord.h */,
 				3D8941551DCB17FE00C32529 /* CPRecord.m */,
 				3D89414E1DCB17FE00C32529 /* CPAACEncoder.h */,
@@ -252,6 +257,7 @@
 				3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */,
 				3D8941431DCB175E00C32529 /* amf.c in Sources */,
 				3D8941561DCB17FE00C32529 /* CPAACEncoder.m in Sources */,
+				3DB4ECBF1DD3043900B1D6B3 /* CPVideoConfiguration.m in Sources */,
 				3D89414A1DCB175E00C32529 /* Makefile in Sources */,
 				3D8941571DCB17FE00C32529 /* CPH264Encoder.m in Sources */,
 				3D89411A1DCB165F00C32529 /* main.m in Sources */,
