@@ -1,14 +1,14 @@
 //
-//  CPRecord.m
-//  Record
+//  CPDefaultSource.m
+//  DefaultSource
 //
 //  Created by 陈鹏 on 16/9/27.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
-#import "CPRecord.h"
+#import "CPDefaultSource.h"
 
-@interface CPRecord ()
+@interface CPDefaultSource ()
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;
 
@@ -27,13 +27,16 @@
 @end
 
 
-@implementation CPRecord
+@implementation CPDefaultSource
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize{
     
     self = [super init];
     
     if (self) {
+        
+        //设置数据源类型
+        [self setSourceType:CPAudioAndVideo];
         
         //1、初始化录制session
         self.captureSession = [[AVCaptureSession alloc] init];
@@ -118,10 +121,12 @@
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        [self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
+        //[self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
+        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        [self.videoEncoder encodeVideoBuffer:sampleBuffer];
+        //[self.videoEncoder encodeVideoBuffer:sampleBuffer];
+        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
     }
 }
 
@@ -141,7 +146,7 @@
             }
             
             CGRect faceBounds = faceObject.bounds;
-            CGSize viewSize = _previewLayer.bounds.size;
+            CGSize viewSize = self.previewLayer.bounds.size;
             
             [self.faceLayer setBounds:CGRectMake(0, 0, faceBounds.size.width * viewSize.height, faceBounds.size.height * viewSize.width)];
             self.faceLayer.position = CGPointMake(viewSize.width * (faceBounds.origin.y + faceBounds.size.height / 2), viewSize.height * (faceBounds.origin.x + faceBounds.size.width / 2));

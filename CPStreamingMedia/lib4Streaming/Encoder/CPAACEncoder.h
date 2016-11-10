@@ -10,11 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "CPPushEngine.h"
+#import "CPAudioEncoding.h"
 
-@interface CPAACEncoder : NSObject
+@interface CPAACEncoder : NSObject <CPAudioEncoding>
 
 @property (strong, nonatomic) CPPushEngine *pushEngine;
-
-- (void)encodeAudioSmapleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 @end

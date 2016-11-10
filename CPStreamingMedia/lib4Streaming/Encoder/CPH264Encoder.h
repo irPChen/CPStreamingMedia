@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
 #import "CPPushEngine.h"
+#import "CPVideoEncoding.h"
 
-@interface CPH264Encoder : NSObject
-
-@property (strong, nonatomic) CPPushEngine *pushEngine;
-
-- (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer;
+@interface CPH264Encoder : NSObject <CPVideoEncoding>
 
 @end

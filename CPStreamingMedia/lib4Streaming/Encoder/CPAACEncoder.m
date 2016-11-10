@@ -55,6 +55,8 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
 
 @implementation CPAACEncoder
 
+@synthesize outputPiple = _outputPiple;
+
 - (instancetype)init{
     
     if (self = [super init]) {
@@ -64,6 +66,12 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
         //        self.push = [[CPPush alloc] initWithURL:@"rtmp://upload.rtmp.kukuplay.com/live/gha8l7"];
     }
     return self;
+}
+
+- (void)setOutputPiple:(CPPushEngine*)outputPiple{
+    if (_outputPiple != outputPiple) {
+        _outputPiple = outputPiple;
+    }
 }
 
 - (void)setUpConverter:(CMSampleBufferRef)sampleBuffer{
@@ -214,7 +222,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
                     NSData *rawAAC = [NSData dataWithBytes:outputBufferList.mBuffers[0].mData length:outputBufferList.mBuffers[0].mDataByteSize];
                     
                     //推流
-                    [self.pushEngine pushAudioData:rawAAC sampleBuffer:sampleBuffer];
+                    [self.outputPiple pushAudioData:rawAAC sampleBuffer:sampleBuffer];
                     
                     free(outputBuffer);
                     outputBuffer = NULL;

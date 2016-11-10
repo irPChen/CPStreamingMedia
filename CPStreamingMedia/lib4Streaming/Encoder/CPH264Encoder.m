@@ -74,13 +74,13 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 @implementation CPH264Encoder
 
-- (void)setPushEngine:(CPPushEngine *)pushEngine{
-    
-    if (_pushEngine != pushEngine) {
-        _pushEngine = pushEngine;
-    }
+@synthesize outputPiple = _outputPiple;
 
-    _output = pushEngine;
+- (void)setOutputPiple:(CPPushEngine*)outputPiple{
+    if (_outputPiple != outputPiple) {
+        _outputPiple = outputPiple;
+    }
+    _output = outputPiple;
 }
 
 - (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer{

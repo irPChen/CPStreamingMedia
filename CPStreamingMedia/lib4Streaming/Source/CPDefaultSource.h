@@ -1,6 +1,6 @@
 //
-//  CPRecord.h
-//  Record
+//  CPDefaultSource.h
+//  DefaultSource
 //
 //  Created by 陈鹏 on 16/9/27.
 //  Copyright © 2016年 P.Chen. All rights reserved.
@@ -10,13 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CPH264Encoder.h"
 #import "CPAACEncoder.h"
+#import "CPBaseSource.h"
 #import <UIKit/UIKit.h>
 
-@interface CPRecord : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
-
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
-
-@property (strong, nonatomic) CPH264Encoder *videoEncoder;
+@interface CPDefaultSource : CPBaseSource <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
 @property (strong, nonatomic) CPAACEncoder *audioEncoder;
 
