@@ -11,7 +11,6 @@
 		3D7CDEA01DD43D180006CA06 /* CPH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE951DD43D180006CA06 /* CPH264Encoder.m */; };
 		3D7CDEA11DD43D180006CA06 /* CPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE991DD43D180006CA06 /* CPPushEngine.m */; };
 		3D7CDEA31DD43D180006CA06 /* CPDefaultSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */; };
-		3D7CDEA61DD43E890006CA06 /* CPBaseSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDEA51DD43E890006CA06 /* CPBaseSource.m */; };
 		3D89411A1DCB165F00C32529 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941191DCB165F00C32529 /* main.m */; };
 		3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89411C1DCB165F00C32529 /* AppDelegate.m */; };
 		3D8941201DCB165F00C32529 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89411F1DCB165F00C32529 /* ViewController.m */; };
@@ -41,8 +40,6 @@
 		3D7CDE991DD43D180006CA06 /* CPPushEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPushEngine.m; sourceTree = "<group>"; };
 		3D7CDE9D1DD43D180006CA06 /* CPDefaultSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDefaultSource.h; sourceTree = "<group>"; };
 		3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDefaultSource.m; sourceTree = "<group>"; };
-		3D7CDEA41DD43E890006CA06 /* CPBaseSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPBaseSource.h; sourceTree = "<group>"; };
-		3D7CDEA51DD43E890006CA06 /* CPBaseSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBaseSource.m; sourceTree = "<group>"; };
 		3D8941151DCB165F00C32529 /* CPStreamingMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPStreamingMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D8941191DCB165F00C32529 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3D89411B1DCB165F00C32529 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +71,7 @@
 		3D8941421DCB175E00C32529 /* rtmp_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp_sys.h; sourceTree = "<group>"; };
 		3D89415A1DCB1FE900C32529 /* CPStreamingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStreamingManager.h; sourceTree = "<group>"; };
 		3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStreamingManager.m; sourceTree = "<group>"; };
+		3D8A0DE31DD5B07800EAD3ED /* CPSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSourceDelegate.h; sourceTree = "<group>"; };
 		3DB4ECBD1DD3043900B1D6B3 /* CPVideoConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPVideoConfiguration.h; sourceTree = "<group>"; };
 		3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPVideoConfiguration.m; sourceTree = "<group>"; };
 		3DC589711DD4794A001B58E3 /* CPVideoEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPVideoEncoding.h; sourceTree = "<group>"; };
@@ -124,8 +122,7 @@
 		3D7CDE9A1DD43D180006CA06 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3D7CDEA41DD43E890006CA06 /* CPBaseSource.h */,
-				3D7CDEA51DD43E890006CA06 /* CPBaseSource.m */,
+				3D8A0DE31DD5B07800EAD3ED /* CPSourceDelegate.h */,
 				3D7CDE9D1DD43D180006CA06 /* CPDefaultSource.h */,
 				3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */,
 			);
@@ -298,7 +295,6 @@
 				3D8941201DCB165F00C32529 /* ViewController.m in Sources */,
 				3D7CDEA31DD43D180006CA06 /* CPDefaultSource.m in Sources */,
 				3D8941451DCB175E00C32529 /* hashswf.c in Sources */,
-				3D7CDEA61DD43E890006CA06 /* CPBaseSource.m in Sources */,
 				3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */,
 				3D8941431DCB175E00C32529 /* amf.c in Sources */,
 				3DB4ECBF1DD3043900B1D6B3 /* CPVideoConfiguration.m in Sources */,

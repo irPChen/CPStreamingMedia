@@ -7,19 +7,18 @@
 //
 
 #import "CPStreamingManager.h"
-#import "CPBaseSource.h"
 #import "CPDefaultSource.h"
-//#import "CPH264Encoder.h"
-//#import "CPAACEncoder.h"
+#import "CPH264Encoder.h"
+#import "CPAACEncoder.h"
 #import "CPPushEngine.h"
 //#import "CPAudioEncoding.h"
 //#import "CPVideoEncoding.h"
 
 @interface CPStreamingManager ()
 
-@property (strong, nonatomic) CPBaseSource *audioSource;
-
-@property (strong, nonatomic) CPBaseSource *videoSource;
+//使用其它数据源时需要修改类型
+@property (strong, nonatomic) CPDefaultSource *audioSource;
+@property (strong, nonatomic) CPDefaultSource *videoSource;
 
 @property (strong, nonatomic) id<CPAudioEncoding> audioEncoder;
 
@@ -60,47 +59,33 @@
          */
 
         
-        
-        //数据源注册
+        //创建数据源
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
         [defaultSource setDelegate:self];
-        [self registAudioSource:nil VideoSource:defaultSource];
-        [self.videoSource start];
+        //注册音、视频数据源
+        [self registAudioSource:defaultSource VideoSource:defaultSource];
+        
+        [self start];
     }
     
     return self;
 }
 
-- (void)registAudioSource:(CPBaseSource*)audioSource VideoSource:(CPBaseSource*)videoSource{
+//注册音、视频数据源到Manager
+- (void)registAudioSource:(id)audioSource VideoSource:(id)videoSource{
     
     if (audioSource) {
         self.audioSource = audioSource;
         NSLog(@"音频源注册成功");
+    }else{
+        NSLog(@"音频源注册失败");
     }
     
     if (videoSource) {
         self.videoSource = videoSource;
         self.previewLayer = self.videoSource.previewLayer;
         NSLog(@"视频源注册成功");
-    }
-    
-    if (!audioSource || !videoSource) {
-        if (videoSource && videoSource.sourceType == CPAudioAndVideo) {
-            self.audioSource = videoSource;
-            NSLog(@"音频源注册成功");
-        }
-        if (audioSource && audioSource.sourceType == CPAudioAndVideo) {
-            self.videoSource = self.audioSource;
-            self.previewLayer = self.videoSource.previewLayer;
-            NSLog(@"视频源注册成功");
-        }
-    }
-    
-    if (!self.audioSource) {
-        NSLog(@"音频源注册失败");
-    }
-    
-    if (!self.videoSource) {
+    }else{
         NSLog(@"视频源注册失败");
     }
 }
@@ -115,7 +100,7 @@
 - (void)registerPushEngine{
 }
 
-
+#pragma mark -- CPSourceDelegate
 - (void)pushSampleBuffer:(CMSampleBufferRef)sampleBuffer WithType:(CPSampleBufferType)type{
     
     switch (type) {
@@ -132,6 +117,11 @@
         default:
             break;
     }
+}
+
+#pragma mark -- 测试方法
+- (void)start{
+    [self.videoSource start];
 }
 
 @end

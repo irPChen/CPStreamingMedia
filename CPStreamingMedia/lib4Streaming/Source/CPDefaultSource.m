@@ -35,9 +35,6 @@
     
     if (self) {
         
-        //设置数据源类型
-        [self setSourceType:CPAudioAndVideo];
-        
         //1、初始化录制session
         self.captureSession = [[AVCaptureSession alloc] init];
         if ([_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]) {
@@ -121,11 +118,9 @@
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        //[self.audioEncoder encodeAudioSmapleBuffer:sampleBuffer];
         [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        //[self.videoEncoder encodeVideoBuffer:sampleBuffer];
         [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
     }
 }

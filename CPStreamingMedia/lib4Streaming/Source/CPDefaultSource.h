@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "CPH264Encoder.h"
-#import "CPAACEncoder.h"
-#import "CPBaseSource.h"
 #import <UIKit/UIKit.h>
+#import "CPSourceDelegate.h"
 
-@interface CPDefaultSource : CPBaseSource <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
+@interface CPDefaultSource : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
-@property (strong, nonatomic) CPAACEncoder *audioEncoder;
+//推数据到Manager
+@property (assign, nonatomic) id<CPSourceDelegate> delegate;
 
-- (void)start;
+//预览View
+@property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
+
+- (void)start;
 
 @end

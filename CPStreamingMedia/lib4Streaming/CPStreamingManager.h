@@ -9,19 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <AVFoundation/AVFoundation.h>
+#import "CPSourceDelegate.h"
 
-typedef NS_ENUM(NSInteger, CPSampleBufferType) {
-    CPVideoSampleBuffer = 0,
-    CPAudioSampleBuffer = 1,
-};
-
-@interface CPStreamingManager : NSObject
+@interface CPStreamingManager : NSObject <CPSourceDelegate>
 
 @property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
-
-- (void)pushSampleBuffer:(CMSampleBufferRef)sampleBuffer WithType:(CPSampleBufferType)type;
 
 @end
 
