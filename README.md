@@ -44,7 +44,7 @@ The method is used to accept raw data.
 - (void)encodeAudioSmapleBuffer:(CMSampleBufferRef)sampleBuffer;
 ```
 ###Extension Protocol
-Developer can extension network protocol like http protocol.
+Developer can extend network layer protocol by themselves, like http and so on.
 
 ## Authors
 CPStreamingMedia was created by [陈鹏](https://github.com/ChenPengOnGitHub) .
