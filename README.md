@@ -12,15 +12,15 @@
 * 推送数据本地Buffer
 
 ##Usage
-1. ***#import "CPStreamingManager.h"***
-2. ***Init***
+1. **#import "CPStreamingManager.h"**
+2. **Init**
 CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
-3. ***Add PreviewLayer***
+3. **Add PreviewLayer**
 [self.view.layer addSublayer:self.streamingManager.previewLayer];
 
 ##Extension
 ###Extension Source
-***Callback Manager***
+**Callback Manager**
 ```Objective-C
 [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
 [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
