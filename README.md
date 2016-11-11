@@ -23,7 +23,7 @@ CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideo
 ```
 
 ##Extension
-###Extension Source
+####Extension Source
 ```Objective-C
 //Necessary Property
 @property (assign, nonatomic) id<CPSourceDelegate> delegate;
@@ -33,14 +33,14 @@ CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideo
 [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
 [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
 ```
-###Extension Encoder
+####Extension Encoder
 AudioEncoder must conforms to the CPAudioEncoding protocol  implement the method.
 VideoEncoder must conforms to the CPVideoEncoding protocol  implement the method.
 The method is used to accept raw data.
 ```Objective-C
 - (void)encodeAudioSmapleBuffer:(CMSampleBufferRef)sampleBuffer;
 ```
-###Extension Protocol
+####Extension Protocol
 Developer can extend network layer protocol by themselves, like http and so on.
 
 ## Authors
