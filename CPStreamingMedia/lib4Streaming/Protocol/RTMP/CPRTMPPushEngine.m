@@ -9,6 +9,23 @@
 #import "CPRTMPPushEngine.h"
 #import "rtmp.h"
 
+//Typical FLV Properties
+#define AUDIO_CODECID @"audiocodecid"       //Audio codec ID used in the file
+#define AUDIO_DATARATE @"audiodatarate"     //Audio bit rate in kilobits per second
+#define AUDIO_DELAY @"audiodelay"           //Delay introduced by the audio codec in seconds
+#define AUDIO_SAMPLERATE @"audiosamplerate" //Frequency at which the audio stream is replayed
+#define AUDIO_SAMPLESIZE @"audiosamplesize" //Resolution of a single audio sample
+#define CAN_SEEKTOEND @"canSeekToEnd"       //Indicating the last video frame is a key frame
+#define CREATION_DATE @"creationdate"       //Creation date and time
+#define DURATION @"duration"                //Total duration of the file in seconds
+#define FILESIZE @"filesize"                //Total size of the file in bytes
+#define FRAMERATE @"framerate"              //Number of frames per second
+#define HEIGHT @"height"                    //Height of the video in pixels
+#define WIDTH @"width"                      //Width of the video in pixels
+#define STEREO @"stereo"                    //Indicating stereo audio
+#define VIDEO_CODECID @"videocodecid"       //Video codec ID used in the file
+#define VIDEO_DATARATE @"videodatarate"     //Video bit rate in kilobits per second
+
 static RTMP *_rtmp;
 
 @implementation CPRTMPPushEngine
@@ -325,7 +342,7 @@ static RTMP *_rtmp;
 - (NSData*)getMetaData{
     
     NSMutableData *metaData = [NSMutableData data];
-    NSDictionary *propertyDic = @{@"width":@1280.0, @"height":@720.0, @"videocodecid":@7.0, @"framerate":@30.0, @"audiocodecid":@10.0, @"audiodatarate":@128.0, @"audiosamplerate":@44100.0, @"audiosamplesize":@16.0, @"audiochannels":@1.0};
+    NSDictionary *propertyDic = @{WIDTH:@1280.0, HEIGHT:@720.0, VIDEO_CODECID:@7.0, FRAMERATE:@30.0, AUDIO_CODECID:@10.0, AUDIO_DATARATE:@128.0, AUDIO_SAMPLERATE:@44100.0, AUDIO_SAMPLESIZE:@16.0, @"audiochannels":@1.0};
     
     [metaData appendData:[self addStringProperty:@"@setDataFrame"]];
     [metaData appendData:[self addStringProperty:@"onMetaData"]];
