@@ -10,7 +10,7 @@
 #import "CPStreamingManager.h"
 #import "CPH264Encoder.h"
 #import "CPAACEncoder.h"
-#import "CPPushEngine.h"
+#import "CPRTMPPushEngine.h"
 
 @interface ViewController ()
 

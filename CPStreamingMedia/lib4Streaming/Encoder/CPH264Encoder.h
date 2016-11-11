@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
-#import "CPPushEngine.h"
+#import "CPRTMPPushEngine.h"
 #import "CPVideoEncoding.h"
 
 @interface CPH264Encoder : NSObject <CPVideoEncoding>

@@ -1,17 +1,17 @@
 //
-//  CPPushEngine.m
+//  CPRTMPPushEngine.m
 //  Record
 //
 //  Created by P.Chen on 16/9/28.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
-#import "CPPushEngine.h"
+#import "CPRTMPPushEngine.h"
 #import "rtmp.h"
 
 static RTMP *_rtmp;
 
-@implementation CPPushEngine
+@implementation CPRTMPPushEngine
 
 - (instancetype)initWithURL:(NSString*)URL{
     

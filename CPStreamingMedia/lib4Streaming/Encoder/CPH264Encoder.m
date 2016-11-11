@@ -9,7 +9,7 @@
 #import "CPH264Encoder.h"
 #import "rtmp.h"
 
-static CPPushEngine *_output;
+static CPRTMPPushEngine *_output;
 
 #pragma mark -- 编码回调
 
@@ -76,7 +76,7 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 @synthesize outputPiple = _outputPiple;
 
-- (void)setOutputPiple:(CPPushEngine*)outputPiple{
+- (void)setOutputPiple:(CPRTMPPushEngine*)outputPiple{
     if (_outputPiple != outputPiple) {
         _outputPiple = outputPiple;
     }

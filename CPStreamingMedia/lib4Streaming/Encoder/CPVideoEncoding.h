@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CPPushEngine.h"
+#import "CPRTMPPushEngine.h"
 
 @protocol CPVideoEncoding <NSObject>
 
 @required
 
-@property (strong, nonatomic) CPPushEngine *outputPiple;
+#warning 修改输出管道类型
+@property (strong, nonatomic) CPRTMPPushEngine *outputPiple;
 
 - (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer;
 

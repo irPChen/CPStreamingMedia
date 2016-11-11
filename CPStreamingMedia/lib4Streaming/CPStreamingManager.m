@@ -10,9 +10,7 @@
 #import "CPDefaultSource.h"
 #import "CPH264Encoder.h"
 #import "CPAACEncoder.h"
-#import "CPPushEngine.h"
-//#import "CPAudioEncoding.h"
-//#import "CPVideoEncoding.h"
+#import "CPRTMPPushEngine.h"
 
 @interface CPStreamingManager ()
 
@@ -24,6 +22,8 @@
 
 @property (strong, nonatomic) id<CPVideoEncoding> videoEncoder;
 
+@property (strong, nonatomic) CPRTMPPushEngine *pushEngine;
+
 @end
 
 @implementation CPStreamingManager
@@ -34,36 +34,19 @@
     
     if (self) {
         
-        CPPushEngine *pushEngine = [[CPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
-        
-        self.audioEncoder = [[CPAACEncoder alloc] init];
-        [self.audioEncoder setOutputPiple:pushEngine];
-        //[self.audioEncoder registPush:pushEngine];
-
-        //[self.audioEncoder setPushEngine:pushEngine];
-        
-        self.videoEncoder = [[CPH264Encoder alloc] init];
-        //[self.videoEncoder registPush:pushEngine];
-        //[self.videoEncoder set];
-        [self.videoEncoder setOutputPiple:pushEngine];
-        
-        //数据源注册
-        /*
-
-        self.record = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
-        //[self.record setAudioEncoder:audioEncoder];
-        //[self.record setVideoEncoder:videoEncoder];
-        [self.record setDelegate:self];
-        self.previewLayer = self.record.previewLayer;
-        [self.record start];
-         */
-
-        
         //创建数据源
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
         [defaultSource setDelegate:self];
         //注册音、视频数据源
         [self registAudioSource:defaultSource VideoSource:defaultSource];
+        
+        self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
+
+        self.audioEncoder = [[CPAACEncoder alloc] init];
+        [self.audioEncoder setOutputPiple:self.pushEngine];
+        
+        self.videoEncoder = [[CPH264Encoder alloc] init];
+        [self.videoEncoder setOutputPiple:self.pushEngine];
         
         [self start];
     }
@@ -88,16 +71,6 @@
     }else{
         NSLog(@"视频源注册失败");
     }
-}
-
-
-- (void)registerAudioEncoder{
-}
-
-- (void)registerVideoEncoder{
-}
-
-- (void)registerPushEngine{
 }
 
 #pragma mark -- CPSourceDelegate

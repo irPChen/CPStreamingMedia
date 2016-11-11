@@ -68,7 +68,7 @@ OSStatus audioConverterComplexInputDataProc(AudioConverterRef inAudioConverter,U
     return self;
 }
 
-- (void)setOutputPiple:(CPPushEngine*)outputPiple{
+- (void)setOutputPiple:(CPRTMPPushEngine*)outputPiple{
     if (_outputPiple != outputPiple) {
         _outputPiple = outputPiple;
     }

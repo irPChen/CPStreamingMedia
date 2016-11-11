@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "CPPushEngine.h"
+#import "CPRTMPPushEngine.h"
 #import "CPAudioEncoding.h"
 
 @interface CPAACEncoder : NSObject <CPAudioEncoding>
 
-@property (strong, nonatomic) CPPushEngine *pushEngine;
+@property (strong, nonatomic) CPRTMPPushEngine *pushEngine;
 
 @end

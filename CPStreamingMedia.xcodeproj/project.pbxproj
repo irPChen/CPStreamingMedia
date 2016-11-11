@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D7CDE9F1DD43D180006CA06 /* CPAACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */; };
 		3D7CDEA01DD43D180006CA06 /* CPH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE951DD43D180006CA06 /* CPH264Encoder.m */; };
-		3D7CDEA11DD43D180006CA06 /* CPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE991DD43D180006CA06 /* CPPushEngine.m */; };
+		3D7CDEA11DD43D180006CA06 /* CPRTMPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE991DD43D180006CA06 /* CPRTMPPushEngine.m */; };
 		3D7CDEA31DD43D180006CA06 /* CPDefaultSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */; };
 		3D89411A1DCB165F00C32529 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941191DCB165F00C32529 /* main.m */; };
 		3D89411D1DCB165F00C32529 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89411C1DCB165F00C32529 /* AppDelegate.m */; };
@@ -36,8 +36,8 @@
 		3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAACEncoder.m; sourceTree = "<group>"; };
 		3D7CDE941DD43D180006CA06 /* CPH264Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPH264Encoder.h; sourceTree = "<group>"; };
 		3D7CDE951DD43D180006CA06 /* CPH264Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPH264Encoder.m; sourceTree = "<group>"; };
-		3D7CDE981DD43D180006CA06 /* CPPushEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPushEngine.h; sourceTree = "<group>"; };
-		3D7CDE991DD43D180006CA06 /* CPPushEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPushEngine.m; sourceTree = "<group>"; };
+		3D7CDE981DD43D180006CA06 /* CPRTMPPushEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRTMPPushEngine.h; sourceTree = "<group>"; };
+		3D7CDE991DD43D180006CA06 /* CPRTMPPushEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRTMPPushEngine.m; sourceTree = "<group>"; };
 		3D7CDE9D1DD43D180006CA06 /* CPDefaultSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDefaultSource.h; sourceTree = "<group>"; };
 		3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDefaultSource.m; sourceTree = "<group>"; };
 		3D8941151DCB165F00C32529 /* CPStreamingMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPStreamingMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,8 +113,8 @@
 		3D7CDE971DD43D180006CA06 /* RTMP */ = {
 			isa = PBXGroup;
 			children = (
-				3D7CDE981DD43D180006CA06 /* CPPushEngine.h */,
-				3D7CDE991DD43D180006CA06 /* CPPushEngine.m */,
+				3D7CDE981DD43D180006CA06 /* CPRTMPPushEngine.h */,
+				3D7CDE991DD43D180006CA06 /* CPRTMPPushEngine.m */,
 			);
 			path = RTMP;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 				3D7CDE9F1DD43D180006CA06 /* CPAACEncoder.m in Sources */,
 				3D89414B1DCB175E00C32529 /* parseurl.c in Sources */,
 				3D7CDEA01DD43D180006CA06 /* CPH264Encoder.m in Sources */,
-				3D7CDEA11DD43D180006CA06 /* CPPushEngine.m in Sources */,
+				3D7CDEA11DD43D180006CA06 /* CPRTMPPushEngine.m in Sources */,
 				3D8941201DCB165F00C32529 /* ViewController.m in Sources */,
 				3D7CDEA31DD43D180006CA06 /* CPDefaultSource.m in Sources */,
 				3D8941451DCB175E00C32529 /* hashswf.c in Sources */,

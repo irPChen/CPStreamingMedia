@@ -12,7 +12,8 @@
 
 @required
 
-@property (strong, nonatomic) CPPushEngine *outputPiple;
+#warning 修改输出管道类型
+@property (strong, nonatomic) CPRTMPPushEngine *outputPiple;
 
 - (void)encodeAudioSmapleBuffer:(CMSampleBufferRef)sampleBuffer;
 
