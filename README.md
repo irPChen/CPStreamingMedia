@@ -11,16 +11,14 @@
 * Add Push Buffer.
 
 ##Usage
-* Import
 ```Objective-C
+//Import
 #import "CPStreamingManager.h"
-```
-* Init
-```Objective-C
+
+//Init
 CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
-```
-* Add PreviewLayer
-```Objective-C
+
+//Add PreviewLayer
 [self.view.layer addSublayer:self.streamingManager.previewLayer];
 ```
 
