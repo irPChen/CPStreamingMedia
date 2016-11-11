@@ -10,8 +10,8 @@
 * 推送数据本地Buffer
 ##Usage
 1. `#import "CPStreamingManager.h"`
-2. Init `CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];`
-3. Add PreviewLayer`[self.view.layer addSublayer:self.streamingManager.previewLayer];`
+2. Init  `CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];`
+3. Add PreviewLayer `[self.view.layer addSublayer:self.streamingManager.previewLayer];`
 ##Extension
 ###Extension Source
 回调数据给调度层（Manager）
