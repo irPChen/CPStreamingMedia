@@ -1,13 +1,14 @@
 # [CPStreamingMedia](https://ChenPengOnBitbucket@bitbucket.org/ChenPengOnBitbucket/cpstreamingmedia.git)
 
 ## Features
-* Record audio and video on iOS device.
-* Encode audio and video by hardware.
+* Audio and video recording on iOS device.
+* Audio and video hardware coding.
 * Push compressed data to Server by RTMP protocol.
 * Face Recognition.
 
 ##Todo
 * Add GPUImageCameraSource.
+* Read source from file.
 * Add Push Buffer.
 
 ##Usage
