@@ -5,9 +5,10 @@
 * Audio and video hardware coding.
 * Push compressed data to Server by RTMP protocol.
 * Face Recognition.
+* Video recordin by GPUImageCamera.
+* Supporting real-time effect filter.
 
 ##Todo
-* Add GPUImageCameraSource.
 * Read source from file.
 * Add Push Buffer.
 
@@ -27,12 +28,12 @@ CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideo
 ####Extension Source
 ```Objective-C
 //Necessary Property
-@property (assign, nonatomic) id<CPSourceDelegate> delegate;
+@property (assign, nonatomic) id<CPSourceDelegate> sourceDelegate;
 @property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 //Callback Manager
-[self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
-[self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
+[self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
+[self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
 ```
 ####Extension Encoder
 AudioEncoder must conforms to the CPAudioEncoding protocol  implement the method.
