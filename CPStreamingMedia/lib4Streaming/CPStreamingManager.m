@@ -8,6 +8,7 @@
 
 #import "CPStreamingManager.h"
 #import "CPDefaultSource.h"
+#import "CPGPUImageCameraSource.h"
 #import "CPH264Encoder.h"
 #import "CPAACEncoder.h"
 #import "CPRTMPPushEngine.h"
@@ -16,7 +17,9 @@
 
 //使用其它数据源时需要修改类型
 @property (strong, nonatomic) CPDefaultSource *audioSource;
-@property (strong, nonatomic) CPDefaultSource *videoSource;
+//@property (strong, nonatomic) CPDefaultSource *videoSource;
+
+@property (strong, nonatomic) CPGPUImageCameraSource *videoSource;
 
 @property (strong, nonatomic) id<CPAudioEncoding> audioEncoder;
 
@@ -34,11 +37,17 @@
     
     if (self) {
         
-        //创建数据源
+        /*创建默认数据源
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
-        [defaultSource setDelegate:self];
+        [defaultSource setSourceDelegate:self];
+        */
+        
+        //创建GPU视频数据源
+        CPGPUImageCameraSource *gpuImageCameraSource = [[CPGPUImageCameraSource alloc] initWithVideoSize:videoSize];
+        [gpuImageCameraSource setSourceDelegate:self];
+        
         //注册音、视频数据源
-        [self registAudioSource:defaultSource VideoSource:defaultSource];
+        [self registAudioSource:nil VideoSource:gpuImageCameraSource];
         
         self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
 

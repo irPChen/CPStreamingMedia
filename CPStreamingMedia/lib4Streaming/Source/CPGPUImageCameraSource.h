@@ -1,8 +1,8 @@
 //
-//  CPDefaultSource.h
-//  DefaultSource
+//  CPGPUImageCameraSource.h
+//  CPStreamingMedia
 //
-//  Created by 陈鹏 on 16/9/27.
+//  Created by P.Chen on 2016/11/15.
 //  Copyright © 2016年 P.Chen. All rights reserved.
 //
 
@@ -10,8 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import "CPSourceDelegate.h"
+#import "GPUImageVideoCamera.h"
 
-@interface CPDefaultSource : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
+@interface CPGPUImageCameraSource : GPUImageVideoCamera <GPUImageVideoCameraDelegate>
 
 //推数据到Manager
 @property (assign, nonatomic) id<CPSourceDelegate> sourceDelegate;

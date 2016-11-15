@@ -118,10 +118,10 @@
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
+        [self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
+        [self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
     }
 }
 
