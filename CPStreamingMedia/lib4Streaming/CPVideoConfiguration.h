@@ -10,6 +10,8 @@
 
 @interface CPVideoConfiguration : NSObject
 
+@property (strong, nonatomic) NSString *preset;
+
 //帧率
 @property (assign, nonatomic) int frameRate;
 

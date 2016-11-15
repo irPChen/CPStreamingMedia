@@ -15,6 +15,10 @@
 
 @interface CPStreamingManager ()
 
+@property (strong, nonatomic) CPVideoConfiguration *videoConfiguration;
+
+@property (strong, nonatomic) CPAudioConfiguration *audioConfiguration;
+
 //使用其它数据源时需要修改类型
 @property (strong, nonatomic) CPDefaultSource *audioSource;
 //@property (strong, nonatomic) CPDefaultSource *videoSource;

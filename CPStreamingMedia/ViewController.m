@@ -24,6 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    CPAudioConfiguration *audioConfiguration = [[CPAudioConfiguration alloc] init];
+    
+    CPVideoConfiguration *videoConfiguration = [[CPVideoConfiguration alloc] init];
+    [videoConfiguration setPreset:AVCaptureSessionPreset1280x720];
+    
+//    self.streamingManager = [[CPStreamingManager alloc] initWithAudioConfiguration:audioConfiguration VideoConfiguration:videoConfiguration];
     self.streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
     [self.view.layer addSublayer:self.streamingManager.previewLayer];
 }
