@@ -178,6 +178,7 @@
 		3D2019841DDB139E0040B100 /* GPUImageUIElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2018D91DDB139D0040B100 /* GPUImageUIElement.m */; };
 		3D2019851DDB139E0040B100 /* GPUImageVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2018DB1DDB139D0040B100 /* GPUImageVideoCamera.m */; };
 		3D2019881DDB15DD0040B100 /* CPGPUImageCameraSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2019871DDB15DD0040B100 /* CPGPUImageCameraSource.m */; };
+		3D20198B1DDB30C90040B100 /* CPAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D20198A1DDB30C90040B100 /* CPAudioConfiguration.m */; };
 		3D7CDE9F1DD43D180006CA06 /* CPAACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */; };
 		3D7CDEA01DD43D180006CA06 /* CPH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE951DD43D180006CA06 /* CPH264Encoder.m */; };
 		3D7CDEA11DD43D180006CA06 /* CPRTMPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE991DD43D180006CA06 /* CPRTMPPushEngine.m */; };
@@ -546,6 +547,8 @@
 		3D2018DB1DDB139D0040B100 /* GPUImageVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageVideoCamera.m; sourceTree = "<group>"; };
 		3D2019861DDB15DD0040B100 /* CPGPUImageCameraSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGPUImageCameraSource.h; sourceTree = "<group>"; };
 		3D2019871DDB15DD0040B100 /* CPGPUImageCameraSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGPUImageCameraSource.m; sourceTree = "<group>"; };
+		3D2019891DDB30C90040B100 /* CPAudioConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAudioConfiguration.h; sourceTree = "<group>"; };
+		3D20198A1DDB30C90040B100 /* CPAudioConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAudioConfiguration.m; sourceTree = "<group>"; };
 		3D7CDE921DD43D180006CA06 /* CPAACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAACEncoder.h; sourceTree = "<group>"; };
 		3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAACEncoder.m; sourceTree = "<group>"; };
 		3D7CDE941DD43D180006CA06 /* CPH264Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPH264Encoder.h; sourceTree = "<group>"; };
@@ -1136,6 +1139,8 @@
 				3D7CDE961DD43D180006CA06 /* Protocol */,
 				3DB4ECBD1DD3043900B1D6B3 /* CPVideoConfiguration.h */,
 				3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */,
+				3D2019891DDB30C90040B100 /* CPAudioConfiguration.h */,
+				3D20198A1DDB30C90040B100 /* CPAudioConfiguration.m */,
 			);
 			path = lib4Streaming;
 			sourceTree = "<group>";
@@ -1230,6 +1235,7 @@
 				3D20192C1DDB139E0040B100 /* GPUImageSmoothToonFilter.m in Sources */,
 				3D2019481DDB139E0040B100 /* GPUImageCrosshairGenerator.m in Sources */,
 				3D20196F1DDB139E0040B100 /* GPUImageWeakPixelInclusionFilter.m in Sources */,
+				3D20198B1DDB30C90040B100 /* CPAudioConfiguration.m in Sources */,
 				3D2018FC1DDB139D0040B100 /* GPUImageColorInvertFilter.m in Sources */,
 				3D2019291DDB139E0040B100 /* GPUImagePolkaDotFilter.m in Sources */,
 				3D20193D1DDB139E0040B100 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,

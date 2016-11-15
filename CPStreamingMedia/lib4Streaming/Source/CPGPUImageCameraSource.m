@@ -59,12 +59,10 @@
             
             CFRetain(pixelBuffer);
             CMSampleBufferRef newSampleBuffer = NULL;
-            // time info
             CMTime frameTime = CMTimeMake(1, 30);
             CMTime currentTime = CMTimeAdd(_lastSampleTime, frameTime);
             CMSampleTimingInfo timing = {frameTime, currentTime, kCMTimeInvalid};
             
-            // format
             OSStatus result = 0;
             CMVideoFormatDescriptionRef videoInfo = NULL;
             result = CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &videoInfo);
@@ -77,7 +75,6 @@
             
             [strongOutput unlockFramebufferAfterReading];
             CFRelease(pixelBuffer);
-            
         }];
     }
     

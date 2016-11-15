@@ -10,12 +10,16 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AVFoundation/AVFoundation.h>
 #import "CPSourceDelegate.h"
+#import "CPVideoConfiguration.h"
+#import "CPAudioConfiguration.h"
 
 @interface CPStreamingManager : NSObject <CPSourceDelegate>
 
 @property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
+
+- (instancetype)initWithAudioConfiguration:(CPAudioConfiguration*)audioConfiguration VideoConfiguration:(CPVideoConfiguration*)videoConfiguration;
 
 @end
 

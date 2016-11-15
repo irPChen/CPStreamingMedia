@@ -37,7 +37,7 @@
     
     if (self) {
         
-        /*创建默认数据源
+        /*创建默认音、视频数据源
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
         [defaultSource setSourceDelegate:self];
         */
@@ -49,11 +49,14 @@
         //注册音、视频数据源
         [self registAudioSource:nil VideoSource:gpuImageCameraSource];
         
+        //推流引擎
         self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
 
+        //音频编码器
         self.audioEncoder = [[CPAACEncoder alloc] init];
         [self.audioEncoder setOutputPiple:self.pushEngine];
         
+        //视频编码器
         self.videoEncoder = [[CPH264Encoder alloc] init];
         [self.videoEncoder setOutputPiple:self.pushEngine];
         
