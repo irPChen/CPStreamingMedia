@@ -28,12 +28,12 @@ CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideo
 ####Extension Source
 ```Objective-C
 //Necessary Property
-@property (assign, nonatomic) id<CPSourceDelegate> sourceDelegate;
+@property (assign, nonatomic) id<CPSourceDelegate> delegate;
 @property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
 //Callback Manager
-[self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
-[self.sourceDelegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
+[self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
+[self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
 ```
 ####Extension Encoder
 AudioEncoder must conforms to the CPAudioEncoding protocol  implement the method.
