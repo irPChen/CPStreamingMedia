@@ -14,7 +14,7 @@
 @interface CPDefaultSource : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
 //推数据到Manager
-@property (assign, nonatomic) id<CPSourceDelegate> sourceDelegate;
+@property (assign, nonatomic) id<CPSourceDelegate> delegate;
 
 //预览View
 @property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;

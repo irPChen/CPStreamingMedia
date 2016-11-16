@@ -14,6 +14,8 @@
 
 @interface CPGPUImageCameraSource ()
 
+@property (strong, nonatomic) GPUImageVideoCamera *camera;
+
 @property (strong, nonatomic) GPUImageFilter *filter;
 
 @property (assign, nonatomic) CMTime lastSampleTime;
@@ -26,19 +28,20 @@
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize{
     
-    self = [super initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
+    self = [super init];
     
     if (self) {
         
-        self.outputImageOrientation = UIInterfaceOrientationPortrait;
-        [self setDelegate:self];
+        self.camera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
+        self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
+        [self.camera setDelegate:self];
         
         GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, videoSize.width, videoSize.height)];
         self.previewLayer = filteredVideoView.layer;
         
         self.filter =  [[GPUImageColorPackingFilter alloc] init];
         
-        [self addTarget:self.filter];
+        [self.camera addTarget:self.filter];
         [self.filter addTarget:filteredVideoView];
         
         GPUImageRawDataOutput *rawDataOutput = [[GPUImageRawDataOutput alloc] initWithImageSize:videoSize resultsInBGRAFormat:YES];
@@ -71,7 +74,7 @@
 
             _lastSampleTime = currentTime;
             
-            [self.sourceDelegate pushSampleBuffer:newSampleBuffer WithType:CPVideoSampleBuffer];
+            [self.delegate pushSampleBuffer:newSampleBuffer WithType:CPVideoSampleBuffer];
             
             [strongOutput unlockFramebufferAfterReading];
             CFRelease(pixelBuffer);
@@ -82,7 +85,7 @@
 }
 
 - (void)start{
-    [self startCameraCapture];
+    [self.camera startCameraCapture];
 }
 
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{

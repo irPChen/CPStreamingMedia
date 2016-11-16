@@ -43,12 +43,12 @@
         
         /*创建默认音、视频数据源
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
-        [defaultSource setSourceDelegate:self];
+        [defaultSource setDelegate:self];
         */
         
         //创建GPU视频数据源
         CPGPUImageCameraSource *gpuImageCameraSource = [[CPGPUImageCameraSource alloc] initWithVideoSize:videoSize];
-        [gpuImageCameraSource setSourceDelegate:self];
+        [gpuImageCameraSource setDelegate:self];
         
         //注册音、视频数据源
         [self registAudioSource:nil VideoSource:gpuImageCameraSource];
