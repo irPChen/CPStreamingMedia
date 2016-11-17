@@ -19,6 +19,8 @@
 - (void)start;
 
 @optional
-- (void)switchCamera;
+- (void)toggleCamera;
+
+- (void)switchTorch;
 
 @end

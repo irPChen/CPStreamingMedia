@@ -202,6 +202,7 @@
 		3D89415C1DCB1FE900C32529 /* CPStreamingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */; };
 		3DB4ECBF1DD3043900B1D6B3 /* CPVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */; };
 		3DDE37121DDDAD49000FE386 /* Live_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDE37111DDDAD49000FE386 /* Live_camera.png */; };
+		3DDE37151DDDBA36000FE386 /* Live_torch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDE37141DDDBA36000FE386 /* Live_torch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -596,6 +597,7 @@
 		3DC589721DD47AEF001B58E3 /* CPAudioEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAudioEncoding.h; sourceTree = "<group>"; };
 		3DDE37111DDDAD49000FE386 /* Live_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live_camera.png; sourceTree = "<group>"; };
 		3DDE37131DDDAEF2000FE386 /* CPSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSourceProtocol.h; sourceTree = "<group>"; };
+		3DDE37141DDDBA36000FE386 /* Live_torch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live_torch.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1153,6 +1155,7 @@
 		3DDE37101DDDAD49000FE386 /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				3DDE37141DDDBA36000FE386 /* Live_torch.png */,
 				3DDE37111DDDAD49000FE386 /* Live_camera.png */,
 			);
 			path = ImageSource;
@@ -1223,6 +1226,7 @@
 				3D8941471DCB175E00C32529 /* librtmp.3.html in Resources */,
 				3D8941461DCB175E00C32529 /* librtmp.3 in Resources */,
 				3D8941481DCB175E00C32529 /* librtmp.pc.in in Resources */,
+				3DDE37151DDDBA36000FE386 /* Live_torch.png in Resources */,
 				3D8941251DCB165F00C32529 /* Assets.xcassets in Resources */,
 				3D8941231DCB165F00C32529 /* Main.storyboard in Resources */,
 			);

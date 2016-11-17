@@ -33,14 +33,23 @@
     self.streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
     [self.view.layer addSublayer:self.streamingManager.previewLayer];
     
-    UIButton *switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-80)/2, self.view.frame.size.height-120, 80, 80)];
+    UIButton *switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-120)/3, self.view.frame.size.height-120, 60, 60)];
     [switchCameraBtn setImage:[UIImage imageNamed:@"Live_camera.png"] forState:UIControlStateNormal];
-    [switchCameraBtn addTarget:self action:@selector(switchCameraAction) forControlEvents:UIControlEventTouchUpInside];
+    [switchCameraBtn addTarget:self action:@selector(toggleCameraAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchCameraBtn];
+    
+    UIButton *switchTorchBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-120)/3*2+60, self.view.frame.size.height-120, 60, 60)];
+    [switchTorchBtn setImage:[UIImage imageNamed:@"Live_torch.png"] forState:UIControlStateNormal];
+    [switchTorchBtn addTarget:self action:@selector(switchTorchAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:switchTorchBtn];
 }
 
-- (void)switchCameraAction{
-    [self.streamingManager switchCamera];
+- (void)toggleCameraAction{
+    [self.streamingManager toggleCamera];
+}
+
+- (void)switchTorchAction{
+    [self.streamingManager switchTorch];
 }
 
 - (void)didReceiveMemoryWarning {

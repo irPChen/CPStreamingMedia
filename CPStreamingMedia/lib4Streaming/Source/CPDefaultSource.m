@@ -51,7 +51,7 @@
         //2、获取输入设备
         NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
         for (AVCaptureDevice *camera in cameras) {
-            if ([camera position] == AVCaptureDevicePositionFront) {//选择摄像头
+            if ([camera position] == AVCaptureDevicePositionBack) {//选择摄像头
                 self.videoCaptureDevice = camera;
             }
         }
@@ -160,7 +160,9 @@
     //    NSLog(@"didDropSampleBuffer:%@",sampleBuffer);
 }
 
-- (void)switchCamera{
+#pragma mark -- CPSourceProtocol
+
+- (void)toggleCamera{
     
     NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *camera in cameras) {
@@ -183,6 +185,19 @@
     }
     
     [self.captureSession commitConfiguration];
+}
+
+- (void)switchTorch{
+    
+    AVCaptureTorchMode torchMode = (self.videoCaptureDevice.torchMode == AVCaptureTorchModeOff) ? AVCaptureTorchModeOn : AVCaptureTorchModeOff;
+    
+    if (self.videoCaptureDevice.torchAvailable) {
+        [self.videoCaptureDevice lockForConfiguration:nil];
+        [self.videoCaptureDevice setTorchMode:torchMode];
+        [self.videoCaptureDevice unlockForConfiguration];
+    }else{
+        NSLog(@"当前摄像机不支持手电功能");
+    }
 }
 
 @end

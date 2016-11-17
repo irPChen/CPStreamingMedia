@@ -21,7 +21,9 @@
 
 - (instancetype)initWithAudioConfiguration:(CPAudioConfiguration*)audioConfiguration VideoConfiguration:(CPVideoConfiguration*)videoConfiguration;
 
-- (void)switchCamera;
+- (void)toggleCamera;
+
+- (void)switchTorch;
 
 @end
 

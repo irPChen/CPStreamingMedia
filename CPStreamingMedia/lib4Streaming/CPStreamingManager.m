@@ -107,11 +107,19 @@
     }
 }
 
-- (void)switchCamera{
-    if ([self.videoSource respondsToSelector:@selector(switchCamera)]) {
-        [self.videoSource switchCamera];
+- (void)toggleCamera{
+    if ([self.videoSource respondsToSelector:@selector(toggleCamera)]) {
+        [self.videoSource toggleCamera];
     }else{
-        NSLog(@"视频源未实现switchCamera方法");
+        NSLog(@"视频源未实现toggleCamera方法");
+    }
+}
+
+- (void)switchTorch{
+    if ([self.videoSource respondsToSelector:@selector(switchTorch)]) {
+        [self.videoSource switchTorch];
+    }else{
+        NSLog(@"视频源未实现switchTorch方法");
     }
 }
 
