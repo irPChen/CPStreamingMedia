@@ -11,17 +11,10 @@
 #import <UIKit/UIKit.h>
 #import "CPSourceDelegate.h"
 #import "GPUImageVideoCamera.h"
+#import "CPSourceProtocol.h"
 
-@interface CPGPUImageCameraSource : NSObject <GPUImageVideoCameraDelegate>
-
-//推数据到Manager
-@property (assign, nonatomic) id<CPSourceDelegate> delegate;
-
-//预览View
-@property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@interface CPGPUImageCameraSource : NSObject <CPSourceProtocol, GPUImageVideoCameraDelegate>
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
-
-- (void)start;
 
 @end

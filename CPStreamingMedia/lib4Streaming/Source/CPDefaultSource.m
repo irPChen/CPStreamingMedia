@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;
 
+@property (strong, nonatomic) AVCaptureDevice *videoCaptureDevice;
+
+@property (strong, nonatomic) AVCaptureDeviceInput *videoCaptureDeviceInput;
+
 @property (strong, nonatomic) AVCaptureVideoDataOutput *videoDataOutput;
 
 @property (strong, nonatomic) AVCaptureAudioDataOutput *audioDataOutput;
@@ -29,6 +33,9 @@
 
 @implementation CPDefaultSource
 
+@synthesize delegate = _delegate;
+@synthesize previewLayer = _previewLayer;
+
 - (instancetype)initWithVideoSize:(CGSize)videoSize{
     
     self = [super init];
@@ -42,11 +49,10 @@
         }
         
         //2、获取输入设备
-        AVCaptureDevice *videoCaptureDevice;
         NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
         for (AVCaptureDevice *camera in cameras) {
             if ([camera position] == AVCaptureDevicePositionFront) {//选择摄像头
-                videoCaptureDevice = camera;
+                self.videoCaptureDevice = camera;
             }
         }
         
@@ -54,7 +60,7 @@
         AVCaptureDevice *audioCaptureDevice = [audioDevices firstObject];
         
         //3、根据输入设备获取输入对象
-        AVCaptureDeviceInput *videoCaptureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:videoCaptureDevice error:nil];
+        self.videoCaptureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:self.videoCaptureDevice error:nil];
         AVCaptureDeviceInput *audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:audioCaptureDevice error:nil];
         
         //4、初始化输出设备
@@ -78,8 +84,8 @@
         [self.captureSession beginConfiguration];
         
         //5、将输入、输出设备添加到会话中
-        if ([self.captureSession canAddInput:videoCaptureDeviceInput]) {
-            [self.captureSession addInput:videoCaptureDeviceInput];
+        if ([self.captureSession canAddInput:self.videoCaptureDeviceInput]) {
+            [self.captureSession addInput:self.videoCaptureDeviceInput];
         }
         if ([self.captureSession canAddInput:audioCaptureDeviceInput]) {
             [self.captureSession addInput:audioCaptureDeviceInput];
@@ -96,9 +102,9 @@
         }
         
         //6、添加视频预览
-        self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-        [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-        [self.previewLayer setFrame:CGRectMake(0, 0, videoSize.width, videoSize.height)];
+        _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+        [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+        [_previewLayer setFrame:CGRectMake(0, 0, videoSize.width, videoSize.height)];
         
         self.videoCaptureConnection = [self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
         self.audioCaptureConnection = [self.audioDataOutput connectionWithMediaType:AVMediaTypeAudio];
@@ -118,10 +124,10 @@
     
     if (connection == self.audioCaptureConnection) {
         //数据推给音频编码器
-        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
+        [_delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
     }else if (self.videoDataOutput == captureOutput){
         //数据推给视频编码器
-        [self.delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
+        [_delegate pushSampleBuffer:sampleBuffer WithType:CPVideoSampleBuffer];
     }
 }
 
@@ -152,6 +158,31 @@
 //录制回调
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     //    NSLog(@"didDropSampleBuffer:%@",sampleBuffer);
+}
+
+- (void)switchCamera{
+    
+    NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *camera in cameras) {
+        if ([camera position] != [self.videoCaptureDevice position]) {
+            self.videoCaptureDevice = camera;
+            break;
+        }
+    }
+    AVCaptureDeviceInput *videoCaptureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:self.videoCaptureDevice error:nil];
+    
+    [self.captureSession beginConfiguration];
+    
+    [self.videoCaptureDevice lockForConfiguration:nil];
+    [self.captureSession removeInput:self.videoCaptureDeviceInput];
+    [self.videoCaptureDevice unlockForConfiguration];
+    
+    if ([self.captureSession canAddInput:videoCaptureDeviceInput]) {
+        [self.captureSession addInput:videoCaptureDeviceInput];
+        self.videoCaptureDeviceInput = videoCaptureDeviceInput;
+    }
+    
+    [self.captureSession commitConfiguration];
 }
 
 @end

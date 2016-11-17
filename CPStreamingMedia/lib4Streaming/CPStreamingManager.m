@@ -20,10 +20,8 @@
 @property (strong, nonatomic) CPAudioConfiguration *audioConfiguration;
 
 //使用其它数据源时需要修改类型
-@property (strong, nonatomic) CPDefaultSource *audioSource;
-//@property (strong, nonatomic) CPDefaultSource *videoSource;
-
-@property (strong, nonatomic) CPGPUImageCameraSource *videoSource;
+@property (strong, nonatomic) id<CPSourceProtocol> audioSource;
+@property (strong, nonatomic) id<CPSourceProtocol> videoSource;
 
 @property (strong, nonatomic) id<CPAudioEncoding> audioEncoder;
 
@@ -41,18 +39,19 @@
     
     if (self) {
         
-        /*创建默认音、视频数据源
+        /*创建默认音、视频数据源*/
         CPDefaultSource *defaultSource = [[CPDefaultSource alloc] initWithVideoSize:videoSize];
         [defaultSource setDelegate:self];
-        */
+        //注册音、视频数据源
+        [self registAudioSource:defaultSource VideoSource:defaultSource];
         
-        //创建GPU视频数据源
+        /*创建GPU视频数据源
         CPGPUImageCameraSource *gpuImageCameraSource = [[CPGPUImageCameraSource alloc] initWithVideoSize:videoSize];
         [gpuImageCameraSource setDelegate:self];
-        
         //注册音、视频数据源
         [self registAudioSource:nil VideoSource:gpuImageCameraSource];
-        
+         */
+
         //推流引擎
         self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
 
@@ -105,6 +104,14 @@
             
         default:
             break;
+    }
+}
+
+- (void)switchCamera{
+    if ([self.videoSource respondsToSelector:@selector(switchCamera)]) {
+        [self.videoSource switchCamera];
+    }else{
+        NSLog(@"视频源未实现switchCamera方法");
     }
 }
 

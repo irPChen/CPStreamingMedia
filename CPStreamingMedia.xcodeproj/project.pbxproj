@@ -201,6 +201,7 @@
 		3D89414C1DCB175E00C32529 /* rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D8941401DCB175E00C32529 /* rtmp.c */; };
 		3D89415C1DCB1FE900C32529 /* CPStreamingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89415B1DCB1FE900C32529 /* CPStreamingManager.m */; };
 		3DB4ECBF1DD3043900B1D6B3 /* CPVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */; };
+		3DDE37121DDDAD49000FE386 /* Live_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDE37111DDDAD49000FE386 /* Live_camera.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -593,6 +594,8 @@
 		3DB4ECBE1DD3043900B1D6B3 /* CPVideoConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPVideoConfiguration.m; sourceTree = "<group>"; };
 		3DC589711DD4794A001B58E3 /* CPVideoEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPVideoEncoding.h; sourceTree = "<group>"; };
 		3DC589721DD47AEF001B58E3 /* CPAudioEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAudioEncoding.h; sourceTree = "<group>"; };
+		3DDE37111DDDAD49000FE386 /* Live_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live_camera.png; sourceTree = "<group>"; };
+		3DDE37131DDDAEF2000FE386 /* CPSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSourceProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1052,6 +1055,7 @@
 			isa = PBXGroup;
 			children = (
 				3D8A0DE31DD5B07800EAD3ED /* CPSourceDelegate.h */,
+				3DDE37131DDDAEF2000FE386 /* CPSourceProtocol.h */,
 				3D7CDE9D1DD43D180006CA06 /* CPDefaultSource.h */,
 				3D7CDE9E1DD43D180006CA06 /* CPDefaultSource.m */,
 				3D2019861DDB15DD0040B100 /* CPGPUImageCameraSource.h */,
@@ -1079,6 +1083,7 @@
 		3D8941171DCB165F00C32529 /* CPStreamingMedia */ = {
 			isa = PBXGroup;
 			children = (
+				3DDE37101DDDAD49000FE386 /* ImageSource */,
 				3D20177E1DDB139D0040B100 /* GPUImage-iOS */,
 				3D89412F1DCB175E00C32529 /* librtmp */,
 				3D89414D1DCB17FE00C32529 /* lib4Streaming */,
@@ -1145,6 +1150,14 @@
 			path = lib4Streaming;
 			sourceTree = "<group>";
 		};
+		3DDE37101DDDAD49000FE386 /* ImageSource */ = {
+			isa = PBXGroup;
+			children = (
+				3DDE37111DDDAD49000FE386 /* Live_camera.png */,
+			);
+			path = ImageSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1206,6 +1219,7 @@
 			files = (
 				3D8941441DCB175E00C32529 /* COPYING in Resources */,
 				3D8941281DCB165F00C32529 /* LaunchScreen.storyboard in Resources */,
+				3DDE37121DDDAD49000FE386 /* Live_camera.png in Resources */,
 				3D8941471DCB175E00C32529 /* librtmp.3.html in Resources */,
 				3D8941461DCB175E00C32529 /* librtmp.3 in Resources */,
 				3D8941481DCB175E00C32529 /* librtmp.pc.in in Resources */,

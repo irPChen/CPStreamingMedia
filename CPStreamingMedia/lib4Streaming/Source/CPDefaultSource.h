@@ -10,17 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import "CPSourceDelegate.h"
+#import "CPSourceProtocol.h"
 
-@interface CPDefaultSource : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
-
-//推数据到Manager
-@property (assign, nonatomic) id<CPSourceDelegate> delegate;
-
-//预览View
-@property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@interface CPDefaultSource : NSObject <CPSourceProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
 - (instancetype)initWithVideoSize:(CGSize)videoSize;
-
-- (void)start;
 
 @end

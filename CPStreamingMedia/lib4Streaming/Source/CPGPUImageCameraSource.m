@@ -26,6 +26,9 @@
 
 @implementation CPGPUImageCameraSource
 
+@synthesize delegate = _delegate;
+@synthesize previewLayer = _previewLayer;
+
 - (instancetype)initWithVideoSize:(CGSize)videoSize{
     
     self = [super init];
@@ -84,12 +87,12 @@
     return self;
 }
 
-- (void)start{
-    [self.camera startCameraCapture];
-}
-
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     CMSampleBufferGetSampleTimingInfo(sampleBuffer, 0, &_timingInfoOut);
+}
+
+- (void)start{
+    [self.camera startCameraCapture];
 }
 
 @end
