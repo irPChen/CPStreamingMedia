@@ -27,9 +27,12 @@ CPStreamingManager *streamingManager = [[CPStreamingManager alloc] initWithVideo
 ##Extension
 ####Extension Source
 ```Objective-C
+//Necessary Protocol
+CPSourceProtocol
+
 //Necessary Property
-@property (assign, nonatomic) id<CPSourceDelegate> delegate;
-@property (assign, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@synthesize delegate = _delegate;
+@synthesize previewLayer = _previewLayer;
 
 //Callback Manager
 [self.delegate pushSampleBuffer:sampleBuffer WithType:CPAudioSampleBuffer];
