@@ -18,4 +18,6 @@
 
 - (void)encodeVideoBuffer:(CMSampleBufferRef)sampleBuffer;
 
+- (void)stopEncoder;
+
 @end

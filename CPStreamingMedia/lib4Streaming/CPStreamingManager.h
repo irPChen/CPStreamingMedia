@@ -25,5 +25,9 @@
 
 - (void)switchTorch;
 
+#pragma mark -- 测试方法
+- (void)start;
+- (void)stop;
+
 @end
 

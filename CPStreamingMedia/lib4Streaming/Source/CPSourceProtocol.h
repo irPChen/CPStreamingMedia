@@ -18,6 +18,8 @@
 
 - (void)start;
 
+- (void)stop;
+
 @optional
 - (void)toggleCamera;
 

@@ -62,8 +62,6 @@
         //视频编码器
         self.videoEncoder = [[CPH264Encoder alloc] init];
         [self.videoEncoder setOutputPiple:self.pushEngine];
-        
-        [self start];
     }
     
     return self;
@@ -126,6 +124,11 @@
 #pragma mark -- 测试方法
 - (void)start{
     [self.videoSource start];
+}
+
+- (void)stop{
+    [self.videoSource stop];
+    [self.videoEncoder stopEncoder];
 }
 
 @end

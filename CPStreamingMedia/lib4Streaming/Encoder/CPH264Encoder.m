@@ -76,6 +76,14 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 @synthesize outputPiple = _outputPiple;
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self releaseCompressionSession];
+    }
+    return self;
+}
+
 - (void)setOutputPiple:(CPRTMPPushEngine*)outputPiple{
     if (_outputPiple != outputPiple) {
         _outputPiple = outputPiple;
@@ -137,6 +145,20 @@ static void compressionOutputCallback(void * CM_NULLABLE outputCallbackRefCon,
     OSStatus encodeStatus = VTCompressionSessionEncodeFrame(_compressionSession, pixelBuffer, presentationTimeStamp, duration, NULL, pixelBuffer, NULL);
     
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+}
+
+- (void)stopEncoder{
+    [self releaseCompressionSession];
+}
+
+- (void)releaseCompressionSession{
+    VTCompressionSessionCompleteFrames(_compressionSession, kCMTimeInvalid);
+    VTCompressionSessionInvalidate(_compressionSession);
+    _compressionSession = nil;
+}
+
+- (void)dealloc{
+    [self releaseCompressionSession];
 }
 
 @end

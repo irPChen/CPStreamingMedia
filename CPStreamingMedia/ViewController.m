@@ -15,6 +15,7 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) CPStreamingManager *streamingManager;
+@property (assign, nonatomic) BOOL isRerod;
 
 @end
 
@@ -33,15 +34,30 @@
     self.streamingManager = [[CPStreamingManager alloc] initWithVideoSize:self.view.frame.size];
     [self.view.layer addSublayer:self.streamingManager.previewLayer];
     
-    UIButton *switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-120)/3, self.view.frame.size.height-120, 60, 60)];
+    UIButton *controlBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-180)/4, self.view.frame.size.height-120, 60, 60)];
+    [controlBtn setImage:[UIImage imageNamed:@"Live_play.png"] forState:UIControlStateNormal];
+    [controlBtn addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:controlBtn];
+    
+    UIButton *switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-180)/4*2+60, self.view.frame.size.height-120, 60, 60)];
     [switchCameraBtn setImage:[UIImage imageNamed:@"Live_camera.png"] forState:UIControlStateNormal];
     [switchCameraBtn addTarget:self action:@selector(toggleCameraAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchCameraBtn];
     
-    UIButton *switchTorchBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-120)/3*2+60, self.view.frame.size.height-120, 60, 60)];
+    UIButton *switchTorchBtn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-180)/4*3+120, self.view.frame.size.height-120, 60, 60)];
     [switchTorchBtn setImage:[UIImage imageNamed:@"Live_torch.png"] forState:UIControlStateNormal];
     [switchTorchBtn addTarget:self action:@selector(switchTorchAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchTorchBtn];
+    
+#warning 测试
+    [self controlAction:controlBtn];
+}
+
+- (void)controlAction:(UIButton*)btn{
+    _isRerod ? [self.streamingManager stop] : [self.streamingManager start];
+    UIImage *image = _isRerod ? [UIImage imageNamed:@"Live_play.png"] : [UIImage imageNamed:@"Live_stop.png"];
+    [btn setImage:image forState:UIControlStateNormal];
+    _isRerod = !_isRerod;
 }
 
 - (void)toggleCameraAction{

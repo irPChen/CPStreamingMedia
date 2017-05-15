@@ -120,6 +120,12 @@
     [self.captureSession startRunning];
 }
 
+- (void)stop{
+    //终止会话
+    [self.captureSession stopRunning];
+}
+
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     
     if (connection == self.audioCaptureConnection) {

@@ -179,6 +179,8 @@
 		3D2019851DDB139E0040B100 /* GPUImageVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2018DB1DDB139D0040B100 /* GPUImageVideoCamera.m */; };
 		3D2019881DDB15DD0040B100 /* CPGPUImageCameraSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2019871DDB15DD0040B100 /* CPGPUImageCameraSource.m */; };
 		3D20198B1DDB30C90040B100 /* CPAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D20198A1DDB30C90040B100 /* CPAudioConfiguration.m */; };
+		3D378DCE1EC9B00C000B3265 /* Live_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D378DCC1EC9B00C000B3265 /* Live_play.png */; };
+		3D378DCF1EC9B00C000B3265 /* Live_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D378DCD1EC9B00C000B3265 /* Live_stop.png */; };
 		3D7CDE9F1DD43D180006CA06 /* CPAACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */; };
 		3D7CDEA01DD43D180006CA06 /* CPH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE951DD43D180006CA06 /* CPH264Encoder.m */; };
 		3D7CDEA11DD43D180006CA06 /* CPRTMPPushEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CDE991DD43D180006CA06 /* CPRTMPPushEngine.m */; };
@@ -551,6 +553,8 @@
 		3D2019871DDB15DD0040B100 /* CPGPUImageCameraSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGPUImageCameraSource.m; sourceTree = "<group>"; };
 		3D2019891DDB30C90040B100 /* CPAudioConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAudioConfiguration.h; sourceTree = "<group>"; };
 		3D20198A1DDB30C90040B100 /* CPAudioConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAudioConfiguration.m; sourceTree = "<group>"; };
+		3D378DCC1EC9B00C000B3265 /* Live_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live_play.png; sourceTree = "<group>"; };
+		3D378DCD1EC9B00C000B3265 /* Live_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live_stop.png; sourceTree = "<group>"; };
 		3D7CDE921DD43D180006CA06 /* CPAACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAACEncoder.h; sourceTree = "<group>"; };
 		3D7CDE931DD43D180006CA06 /* CPAACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAACEncoder.m; sourceTree = "<group>"; };
 		3D7CDE941DD43D180006CA06 /* CPH264Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPH264Encoder.h; sourceTree = "<group>"; };
@@ -1155,6 +1159,8 @@
 		3DDE37101DDDAD49000FE386 /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				3D378DCC1EC9B00C000B3265 /* Live_play.png */,
+				3D378DCD1EC9B00C000B3265 /* Live_stop.png */,
 				3DDE37141DDDBA36000FE386 /* Live_torch.png */,
 				3DDE37111DDDAD49000FE386 /* Live_camera.png */,
 			);
@@ -1225,8 +1231,10 @@
 				3DDE37121DDDAD49000FE386 /* Live_camera.png in Resources */,
 				3D8941471DCB175E00C32529 /* librtmp.3.html in Resources */,
 				3D8941461DCB175E00C32529 /* librtmp.3 in Resources */,
+				3D378DCF1EC9B00C000B3265 /* Live_stop.png in Resources */,
 				3D8941481DCB175E00C32529 /* librtmp.pc.in in Resources */,
 				3DDE37151DDDBA36000FE386 /* Live_torch.png in Resources */,
+				3D378DCE1EC9B00C000B3265 /* Live_play.png in Resources */,
 				3D8941251DCB165F00C32529 /* Assets.xcassets in Resources */,
 				3D8941231DCB165F00C32529 /* Main.storyboard in Resources */,
 			);
