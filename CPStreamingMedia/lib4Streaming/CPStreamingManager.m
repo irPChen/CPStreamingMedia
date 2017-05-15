@@ -53,7 +53,7 @@
          */
 
         //推流引擎
-        self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.57.6.116/live/gha8l7"];
+        self.pushEngine = [[CPRTMPPushEngine alloc] initWithURL:@"rtmp://10.75.82.9:1935/rtmplive/gha8l7"];
 
         //音频编码器
         self.audioEncoder = [[CPAACEncoder alloc] init];
