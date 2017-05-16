@@ -28,6 +28,8 @@
 
 @property (strong, nonatomic) CALayer *faceLayer;
 
+@property (assign, nonatomic) dispatch_queue_t session_queue;
+
 @end
 
 
@@ -41,6 +43,8 @@
     self = [super init];
     
     if (self) {
+        
+        self.session_queue = dispatch_queue_create("com.cpstreammedia.session", NULL);
         
         //1、初始化录制session
         self.captureSession = [[AVCaptureSession alloc] init];
@@ -117,12 +121,20 @@
 
 - (void)start{
     //启动会话
-    [self.captureSession startRunning];
+    if (![self.captureSession isRunning]) {
+        dispatch_async(self.session_queue, ^{
+            [self.captureSession startRunning];
+        });
+    }
 }
 
 - (void)stop{
     //终止会话
-    [self.captureSession stopRunning];
+    if ([self.captureSession isRunning]) {
+        dispatch_async(self.session_queue, ^{
+            [self.captureSession stopRunning];
+        });
+    }
 }
 
 
