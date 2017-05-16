@@ -44,7 +44,7 @@
     
     if (self) {
         
-        self.session_queue = dispatch_queue_create("com.cpstreammedia.session", NULL);
+        self.session_queue = dispatch_queue_create("com.cp.capturesession", NULL);
         
         //1、初始化录制session
         self.captureSession = [[AVCaptureSession alloc] init];
