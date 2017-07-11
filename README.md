@@ -1,4 +1,6 @@
-# [CPStreamingMedia](https://ChenPengOnBitbucket@bitbucket.org/ChenPengOnBitbucket/cpstreamingmedia.git)
+# [CPStreamingMedia](https://github.com/ChenPengOnGitHub/CPStreamingMedia)
+
+RTMP live Library Based on Objective-C language.
 
 ## Features
 * Audio and video recording on iOS device.
