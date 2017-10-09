@@ -1,5 +1,7 @@
 language: objective-c #语言种类
 
-xcode_project: CPStreamingMedia.xcodeproj # 项目文件相对于.travis.yml文件的路径
+#xcode_project: CPStreamingMedia.xcodeproj # 项目文件相对于.travis.yml文件的路径
 
-xcode_scheme: CPStreamingMedia #你需要集成测试的scheme
+#xcode_scheme: CPStreamingMedia #你需要集成测试的scheme
+
+script: xcodebuild -workspace CPStreamingMedia.xcworkspace -scheme CPStreamingMedia -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
