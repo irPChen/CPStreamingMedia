@@ -1,5 +1,7 @@
 # [CPStreamingMedia](https://github.com/ChenPengOnGitHub/CPStreamingMedia)
 
+![](https://travis-ci.org/ChenPengOnGitHub/CPStreamingMedia.svg?branch=master)
+
 RTMP live Library Based on Objective-C language.
 
 ## Features
